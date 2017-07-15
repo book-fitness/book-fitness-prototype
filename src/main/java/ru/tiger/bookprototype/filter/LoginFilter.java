@@ -1,0 +1,67 @@
+package ru.tiger.bookprototype.filter;
+
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import ru.tiger.bookprototype.globalService.LoginService;
+import ru.tiger.bookprototype.globalService.LoginServiceImpl;
+
+@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
+public class LoginFilter implements Filter {
+    
+    public LoginFilter() {
+    }    
+    
+     /**
+     *
+     * @param request The servlet request we are processing
+     * @param response The servlet response we are creating
+     * @param chain The filter chain we are processing
+     *
+     * @exception IOException if an input/output error occurs
+     * @exception ServletException if a servlet error occurs
+     */
+    public void doFilter(ServletRequest request, ServletResponse response,
+            FilterChain chain)
+            throws IOException, ServletException {
+        
+        LoginService loginService = new LoginServiceImpl();
+        String page = ((HttpServletRequest) request).getServletPath();
+        
+        if (!page.equals("/LoginPage") && !loginService.checkLogin((HttpServletRequest) request, (HttpServletResponse) response)) {
+            request.getServletContext().getRequestDispatcher("/LoginPage").forward(request, response);
+            //((HttpServletResponse) response).sendRedirect("LoginPage");
+            return;
+        }
+        
+        
+        Throwable problem = null;
+        try {
+            chain.doFilter(request, response);
+        } catch (Throwable t) {
+            // If an exception is thrown somewhere down the filter chain,
+            // we still want to execute our after processing, and then
+            // rethrow the problem after that.
+            problem = t;
+            t.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {}
+
+    @Override
+    public void destroy() {}
+
+}

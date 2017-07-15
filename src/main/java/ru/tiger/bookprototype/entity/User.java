@@ -23,6 +23,72 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private String login;
+    private String password; // todo: convert to MD5
+    
+    private String email;
+    
+    private String vk;
+    private String mailru;
+    private String facebook;
+    private String instagram;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getVk() {
+        return vk;
+    }
+
+    public void setVk(String vk) {
+        this.vk = vk;
+    }
+
+    public String getMailru() {
+        return mailru;
+    }
+
+    public void setMailru(String mailru) {
+        this.mailru = mailru;
+    }
+
+    public String getFacebook() {
+        return facebook;
+    }
+
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+
+    public String getInstagram() {
+        return instagram;
+    }
+
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
+    }
+    
     public Long getId() {
         return id;
     }
@@ -30,7 +96,7 @@ public class User implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
