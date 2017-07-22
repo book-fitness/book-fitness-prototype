@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,6 +21,13 @@ import ru.tiger.bookprototype.globalService.LoginServiceImpl;
 
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
+    
+    private static List<String> ignorePages = Collections.unmodifiableList(
+        new ArrayList<String>() {{
+            add("/LoginPage");
+            add("/RegistrationPage");
+        }}
+    );
     
     public LoginFilter() {
     }    
@@ -35,10 +45,10 @@ public class LoginFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         
-        LoginService loginService = new LoginServiceImpl();
+        LoginService loginService = new LoginServiceImpl(((HttpServletRequest) request).getSession(false));
         String page = ((HttpServletRequest) request).getServletPath();
         
-        if (!page.equals("/LoginPage") && !loginService.checkLogin((HttpServletRequest) request, (HttpServletResponse) response)) {
+        if (!ignorePages.contains(page) && !loginService.isLogged()) {
             request.getServletContext().getRequestDispatcher("/LoginPage").forward(request, response);
             //((HttpServletResponse) response).sendRedirect("LoginPage");
             return;

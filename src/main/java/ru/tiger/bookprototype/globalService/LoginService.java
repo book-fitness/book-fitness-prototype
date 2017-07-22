@@ -2,7 +2,11 @@ package ru.tiger.bookprototype.globalService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ru.tiger.bookprototype.entity.User;
 
 public interface LoginService {
-    public boolean checkLogin(HttpServletRequest request, HttpServletResponse response);
+    boolean checkPassword(String password, User user);
+    void login(User user);
+    void logout(User user);
+    boolean isLogged();
 }

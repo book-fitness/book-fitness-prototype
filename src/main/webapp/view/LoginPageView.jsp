@@ -20,5 +20,6 @@
         <div>
             VK/FACEBOOK/MAIL.RU/ (See ulogin.ru)
         </div>
+        <a href="RegistrationPage" >Registration</a><br>
     </body>
 </html>

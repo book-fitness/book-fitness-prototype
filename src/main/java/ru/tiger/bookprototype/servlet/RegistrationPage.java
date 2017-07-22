@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package ru.tiger.bookprototype.servlet;
 
 import java.io.IOException;
@@ -9,15 +14,16 @@ import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.dao.UserDAOMap;
 import ru.tiger.bookprototype.entity.User;
-import ru.tiger.bookprototype.globalService.LoginService;
-import ru.tiger.bookprototype.globalService.LoginServiceImpl;
 
-/**
- *
- * @author Игорь
- */
-@WebServlet(name = "LoginPage", urlPatterns = {"/LoginPage"})
-public class LoginPage extends HttpServlet {
+@WebServlet(name = "RegistrationPage", urlPatterns = {"/RegistrationPage"})
+public class RegistrationPage extends HttpServlet {
+
+ 
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -31,8 +37,8 @@ public class LoginPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        request.getServletContext().getRequestDispatcher("/view/LoginPageView.jsp").forward(request, response);
+        //processRequest(request, response);
+        request.getServletContext().getRequestDispatcher("/view/RegistrationView.jsp").forward(request, response);
     }
 
     /**
@@ -46,24 +52,28 @@ public class LoginPage extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //processRequest(request, response);
+        String login = request.getParameter("Login");
+        String password = request.getParameter("Password");
+        String email = request.getParameter("Email");
+        String phone = request.getParameter("Phone");
         
-        String login = (String) request.getParameter("login");
-        String password = (String) request.getParameter("password");
+        User user = new User();
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setEmail(email);
+        user.setPhone(phone);
+        
         
         UserDAO userDao = new UserDAOMap();
-        User user = userDao.findByLogin(login);
         
-        if (user == null) {
+        if (userDao.exist(user)) {
             response.sendRedirect("RegistrationPage");
         } else {
-            LoginService loginService = new LoginServiceImpl(request.getSession());
-            if (loginService.checkPassword(password, user)) {
-                loginService.login(user);
-                response.sendRedirect("MainPage");
-            } else {
-                response.sendRedirect("LoginPage");
-            }
+            response.sendRedirect("LoginPage");
+            userDao.create(user);
         }
+        
     }
 
     /**
