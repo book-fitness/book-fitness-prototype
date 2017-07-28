@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.dao.UserDAOMap;
+import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.globalService.LoginService;
 import ru.tiger.bookprototype.globalService.LoginServiceImpl;
@@ -49,6 +50,7 @@ public class LoginPage extends HttpServlet {
         
         String login = (String) request.getParameter("login");
         String password = (String) request.getParameter("password");
+        password = MD5Util.getHash(password);
         
         UserDAO userDao = new UserDAOMap();
         User user = userDao.findByLogin(login);

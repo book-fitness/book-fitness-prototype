@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.dao.UserDAOMap;
+import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 
 @WebServlet(name = "RegistrationPage", urlPatterns = {"/RegistrationPage"})
@@ -55,6 +56,7 @@ public class RegistrationPage extends HttpServlet {
         //processRequest(request, response);
         String login = request.getParameter("Login");
         String password = request.getParameter("Password");
+        password = MD5Util.getHash(password);
         String email = request.getParameter("Email");
         String phone = request.getParameter("Phone");
         
