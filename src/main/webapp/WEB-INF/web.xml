@@ -4,6 +4,17 @@
         <description>ServletContextListener</description>
         <listener-class>ru.tiger.bookprototype.servlet.listener.BPContextListener</listener-class>
     </listener>
+    
+    <servlet> 
+        <servlet-name>springapp</servlet-name> 
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class> 
+        <load-on-startup>1</load-on-startup> 
+    </servlet> 
+    <servlet-mapping> 
+        <servlet-name>springapp</servlet-name> 
+        <url-pattern>*.htm</url-pattern> 
+    </servlet-mapping>
+    
     <session-config>
         <session-timeout>
             30

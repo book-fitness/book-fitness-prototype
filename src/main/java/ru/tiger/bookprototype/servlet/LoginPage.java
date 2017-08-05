@@ -61,7 +61,7 @@ public class LoginPage extends HttpServlet {
             LoginService loginService = new LoginServiceImpl(request.getSession());
             if (loginService.checkPassword(password, user)) {
                 loginService.login(user);
-                response.sendRedirect("MainPage");
+                response.sendRedirect("MainPage.htm");
             } else {
                 response.sendRedirect("LoginPage");
             }
