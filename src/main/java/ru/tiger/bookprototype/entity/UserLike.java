@@ -16,11 +16,11 @@ import javax.persistence.Id;
  * @author Tiger
  */
 @Entity
-public class Like implements Serializable {
+public class UserLike implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     public Long getId() {
@@ -41,10 +41,10 @@ public class Like implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Like)) {
+        if (!(object instanceof UserLike)) {
             return false;
         }
-        Like other = (Like) object;
+        UserLike other = (UserLike) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
