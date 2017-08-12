@@ -24,8 +24,8 @@ public class LoginFilter implements Filter {
     
     private static List<String> ignorePages = Collections.unmodifiableList(
         new ArrayList<String>() {{
-            add("/LoginPage");
-            add("/RegistrationPage");
+            add("/LoginPage.htm");
+            add("/RegistrationPage.htm");
         }}
     );
     
@@ -49,7 +49,7 @@ public class LoginFilter implements Filter {
         String page = ((HttpServletRequest) request).getServletPath();
         
         if (!ignorePages.contains(page) && !loginService.isLogged()) {
-            request.getServletContext().getRequestDispatcher("/LoginPage").forward(request, response);
+            request.getServletContext().getRequestDispatcher("/LoginPage.htm").forward(request, response);
             //((HttpServletResponse) response).sendRedirect("LoginPage");
             return;
         }

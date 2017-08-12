@@ -28,5 +28,8 @@
 
     <!-- the application context definition for the springapp DispatcherServlet -->
     <bean name="/MainPage.htm" class="controller.MainPageController" />
+    <bean name="/RegistrationPage.htm" class="controller.RegistrationPageController" />
+    <bean name="/LoginPage.htm" class="controller.LoginPageController" />
+    <bean name="/ErrorPage.htm" class="controller.ErrorPageController" />
     
 </beans>

@@ -7,7 +7,7 @@
     </head>
     <body>
         <h2>Registration</h2>
-        <form name="RegistrationForm" action="RegistrationPage" method="POST">
+        <form name="RegistrationForm" action="RegistrationPage.htm" method="POST">
             Login <input type="text" name="Login"><br>
             Phone <input type="text" name="Phone"><br>
             E-mail <input type="text" name="Email"><br>
