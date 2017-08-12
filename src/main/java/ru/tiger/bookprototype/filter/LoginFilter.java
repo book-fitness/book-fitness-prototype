@@ -22,6 +22,13 @@ import ru.tiger.bookprototype.globalService.LoginServiceImpl;
 @WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
     
+    private static List<String> ignoreFolders = Collections.unmodifiableList(
+        new ArrayList<String>() {{
+            add("/js");
+            add("/css");
+        }}
+    );
+    
     private static List<String> ignorePages = Collections.unmodifiableList(
         new ArrayList<String>() {{
             add("/LoginPage.htm");
@@ -46,9 +53,9 @@ public class LoginFilter implements Filter {
             throws IOException, ServletException {
         
         LoginService loginService = new LoginServiceImpl(((HttpServletRequest) request).getSession(false));
-        String page = ((HttpServletRequest) request).getServletPath();
+        String path = ((HttpServletRequest) request).getServletPath();
         
-        if (!ignorePages.contains(page) && !loginService.isLogged()) {
+        if (!isIgnoredPath(path) && !loginService.isLogged()) {
             request.getServletContext().getRequestDispatcher("/LoginPage.htm").forward(request, response);
             //((HttpServletResponse) response).sendRedirect("LoginPage");
             return;
@@ -66,6 +73,19 @@ public class LoginFilter implements Filter {
             t.printStackTrace();
         }
 
+    }
+    
+    private boolean isIgnoredPath(String path) {
+        if (ignorePages.contains(path)) {
+            return true;
+        }
+        
+        for (String folder : ignoreFolders) {
+            if (path.startsWith(folder)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
