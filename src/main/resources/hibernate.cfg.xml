@@ -49,6 +49,7 @@ Contributor(s):
     <property name="hibernate.hbm2ddl.auto">update</property>
     
     <mapping class="ru.tiger.bookprototype.entity.User"/>
+    <mapping class="ru.tiger.bookprototype.entity.Role"/>
     <mapping class="ru.tiger.bookprototype.entity.Comment"/>
     <mapping class="ru.tiger.bookprototype.entity.UserLike"/>
     <mapping class="ru.tiger.bookprototype.entity.Post"/>

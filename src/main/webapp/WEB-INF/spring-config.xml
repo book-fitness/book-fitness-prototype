@@ -24,35 +24,8 @@
           http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
 ">
-    
-
-    <!-- the application context definition for the springapp DispatcherServlet -->
-    <bean name="/MainPage.htm" class="controller.MainPageController" />
-    <bean name="/RegistrationPage.htm" class="controller.RegistrationPageController" />
-    <bean name="/LoginPage.htm" class="controller.LoginPageController" />
-    <bean name="/ErrorPage.htm" class="controller.ErrorPageController" />
-    
-    <!--
-    <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
- 
-        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/
-            <yourDataBaseName>" />
-                <property name="username" value="root" />
-                <property name="password" value="password" />
-    </bean>
-
-    <authentication-provider>
-        <jdbc-user-service data-source-ref="dataSource" 
-                              users-by-username-query="select username, password, enabled 
-      	                                           from users where username = ?"
-                              authorities-by-username-query="select u.username, au.authority 
-      	                                                 from users u, authorities au  
-       	                                                where u.id = au.user_id and u.username = ?" />
-    </authentication-provider> 
-    -->
-    
-    <bean id="userDetailsService" class="ru.tiger.bookprototype.dao.UserDetailsServicieImpl" />
-    <authentication-provider user-service-ref="userDetailsService" />
+    <security:authentication-manager>
+        <security:authentication-provider
+            user-service-ref="userDetailsService"/>
+    </security:authentication-manager>
 </beans>

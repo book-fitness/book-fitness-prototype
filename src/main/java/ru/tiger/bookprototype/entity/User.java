@@ -6,7 +6,11 @@
 package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
+import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,17 +26,24 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    
+    private String name;
     private String login;
     private String password; // todo: convert to MD5
     private String phone;
     private String email;
     
-    private String vk;
-    private String mailru;
-    private String facebook;
-    private String instagram;
-
+    // @ManyToMany
+    private Set<Role> roles;
+    
+    @Column(name = "auth_via")
+    @Enumerated(EnumType.STRING)
+    private AuthType authVia;
+    
+    @Column(name = "social_id")
+    private String socialId;
+    //private String socialInfo; // add some information
+    
     public String getLogin() {
         return login;
     }
@@ -65,44 +76,24 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public String getVk() {
-        return vk;
-    }
-
-    public void setVk(String vk) {
-        this.vk = vk;
-    }
-
-    public String getMailru() {
-        return mailru;
-    }
-
-    public void setMailru(String mailru) {
-        this.mailru = mailru;
-    }
-
-    public String getFacebook() {
-        return facebook;
-    }
-
-    public void setFacebook(String facebook) {
-        this.facebook = facebook;
-    }
-
-    public String getInstagram() {
-        return instagram;
-    }
-
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
-    }
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public AuthType getAuthVia() {
+        return authVia;
+    }
+
+    public void setAuthVia(AuthType authVia) {
+        this.authVia = authVia;
+    }
+    
+    public Set<Role> getRoleList() {
+        return roles;
     }
     
     @Override

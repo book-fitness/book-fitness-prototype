@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.globalService.LoginService;
 import ru.tiger.bookprototype.globalService.LoginServiceImpl;
 
-@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
+//@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
     
     private static List<String> ignoreFolders = Collections.unmodifiableList(

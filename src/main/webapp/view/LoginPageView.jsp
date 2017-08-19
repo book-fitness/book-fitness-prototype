@@ -21,13 +21,16 @@
                 <div class="form">
                     <h1 class="form-header-text center">Войти в систему</h1>
 
-                    <form name="LoginForm" action="LoginPage.htm" method="POST">
+                    <form name="LoginForm" action="/j_spring_security_check" method="POST">
                         <label class="label-text">Логин</label>
-                        <input type="text" name="login" class="width-full">
+                        <input type="text" name="j_username" class="width-full">
 
                         <span style="float:right;" class="label-text"><a href="">Забыли пароль?</a></span>
                         <label class="label-text">Пароль</label>
-                        <input type="text" name="password" class="width-full">
+                        <input type="text" name="j_password" class="width-full">
+                        
+                        <label class="label-text">Запомнить меня</label><input type="checkbox" name="_spring_security_remember_me" checked>
+                        
                         <input type="submit" value="Войти" class="form-btn width-full">
                     </form>
 
