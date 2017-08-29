@@ -26,12 +26,6 @@
 ">
     
 
-    <!-- the application context definition for the springapp DispatcherServlet -->
-    <bean name="/MainPage.htm" class="controller.MainPageController" />
-    <bean name="/RegistrationPage.htm" class="controller.RegistrationPageController" />
-    <bean name="/LoginPage.htm" class="controller.LoginPageController" />
-    <bean name="/ErrorPage.htm" class="controller.ErrorPageController" />
-    
     <!--
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -53,6 +47,29 @@
     </authentication-provider> 
     -->
     
-    <bean id="userDetailsService" class="ru.tiger.bookprototype.dao.UserDetailsServicieImpl" />
+    <bean id="userDAO" class="ru.tiger.bookprototype.dao.UserDAOImpl" />
+    <bean id="userDetailsService" class="ru.tiger.bookprototype.dao.UserDetailsServicieImpl">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
     <authentication-provider user-service-ref="userDetailsService" />
+    
+    <http access-denied-page="/ErrorPage.htm?error=403"> 
+        <intercept-url pattern="/MainPage.htm" access="ROLE_USER,ROLE_ANONYMOUS"/> 
+        <intercept-url pattern="/add*" access="ROLE_USER"/> 
+        <intercept-url pattern="/delete/*" access="ROLE_ADMIN"/> 
+        <form-login login-page="/LoginPage.htm" default-target-url="/index" authentication-failure-url="/LoginPage.htm?error=true"/> 
+        <logout logout-url="/LogoutPage.htm" logout-success-url="/index"/> 
+        <anonymous username="guest" granted-authority="ROLE_ANONYMOUS"/> 
+        <remember-me/> 
+    </http>
+    
+    <!-- the application context definition for the springapp DispatcherServlet -->
+    <bean name="/MainPage.htm" class="ru.tiger.bookprototype.controller.MainPageController" />
+    <bean name="/RegistrationPage.htm" class="ru.tiger.bookprototype.controller.RegistrationPageController">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+    <bean name="/LoginPage.htm" class="ru.tiger.bookprototype.controller.LoginPageController" />
+    <bean name="/ErrorPage.htm" class="ru.tiger.bookprototype.controller.ErrorPageController" />
+    
+    
 </beans>

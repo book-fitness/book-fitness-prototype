@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package ru.tiger.bookprototype.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -16,10 +16,10 @@ import org.springframework.web.servlet.mvc.Controller;
  *
  * @author Игорь
  */
-public class ErrorPageController implements Controller {
+public class MainPageController implements Controller {
     
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-        return new ModelAndView("view/ErrorPageView.jsp");
+        System.out.println("Main page controller..."); 
+        return new ModelAndView("view/MainPageView.jsp"); 
     } 
 }
-

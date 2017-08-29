@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.globalService;
+package ru.tiger.bookprototype.service;
 
 import javax.servlet.http.HttpSession;
 import ru.tiger.bookprototype.entity.User;

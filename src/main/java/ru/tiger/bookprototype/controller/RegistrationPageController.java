@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package ru.tiger.bookprototype.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.view.RedirectView;
 import ru.tiger.bookprototype.dao.UserDAO;
-import ru.tiger.bookprototype.dao.UserDAOMap;
 import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 
@@ -22,6 +21,16 @@ import ru.tiger.bookprototype.entity.User;
  * @author Игорь
  */
 public class RegistrationPageController implements Controller {
+    
+    private UserDAO userDAO;
+
+    public UserDAO getUserDAO() {
+        return userDAO;
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
     
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
         System.out.println("Registration Page Controller...");
@@ -52,12 +61,10 @@ public class RegistrationPageController implements Controller {
         user.setPhone(phone);
         
         
-        UserDAO userDao = new UserDAOMap();
-        
-        if (userDao.exist(user)) {
+        if (userDAO.exist(user)) {
             return new ModelAndView(new RedirectView("ErrorPage"));
         } else {
-            userDao.create(user);
+            userDAO.create(user);
             return new ModelAndView(new RedirectView("LoginPage"));
         }
         

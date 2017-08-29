@@ -13,9 +13,16 @@ import ru.tiger.bookprototype.entity.Role;
 
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    @Autowired
-    UserDAO userDAO;
+    private UserDAO userDAO;
 
+    public UserDAO getUserDAO() {
+        return userDAO;
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+    
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         ru.tiger.bookprototype.entity.User person = userDAO.findByLogin(login);

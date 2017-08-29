@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.globalService;
+package ru.tiger.bookprototype.service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
