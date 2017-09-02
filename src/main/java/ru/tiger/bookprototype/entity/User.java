@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
@@ -14,11 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 
-/**
- *
- * @author Tiger
- */
 @Entity
 public class User implements Serializable {
 
@@ -27,13 +22,16 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
-    private String login;
+    private String username;
     private String password; // todo: convert to MD5
+    @Transient
+    private String confirmPassword;
     private String phone;
     private String email;
     
-    // @ManyToMany
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     
     @Column(name = "auth_via")
@@ -44,12 +42,12 @@ public class User implements Serializable {
     private String socialId;
     //private String socialInfo; // add some information
     
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -59,7 +57,15 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
 
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+    
     public String getPhone() {
         return phone;
     }
@@ -92,8 +98,12 @@ public class User implements Serializable {
         this.authVia = authVia;
     }
     
-    public Set<Role> getRoleList() {
+    public Set<Role> getRoles() {
         return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
     
     @Override

@@ -19,6 +19,10 @@ Any value defined here will override the pom.xml file value but is only applicab
     <spring-data xmlns="http://www.netbeans.org/ns/spring-data/1">
         <config-files>
             <config-file>src/main/webapp/WEB-INF/springapp-servlet.xml</config-file>
+            <config-file>src/main/webapp/WEB-INF/appconfig-root.xml</config-file>
+            <config-file>src/main/webapp/WEB-INF/appconfig-mvc.xml</config-file>
+            <config-file>src/main/webapp/WEB-INF/appconfig-data.xml</config-file>
+            <config-file>src/main/webapp/WEB-INF/appconfig-security.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ru.tiger.bookprototype.controller;
 
 import java.io.IOException;
@@ -16,10 +11,7 @@ import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 
-/**
- *
- * @author Игорь
- */
+@Deprecated
 public class RegistrationPageController implements Controller {
     
     private UserDAO userDAO;
@@ -55,16 +47,16 @@ public class RegistrationPageController implements Controller {
         String phone = request.getParameter("Phone");
         
         User user = new User();
-        user.setLogin(login);
+        user.setUsername(login);
         user.setPassword(password);
         user.setEmail(email);
         user.setPhone(phone);
         
         
-        if (userDAO.exist(user)) {
+        if (userDAO.findByUsername(user.getUsername()) != null) {
             return new ModelAndView(new RedirectView("ErrorPage"));
         } else {
-            userDAO.create(user);
+            userDAO.save(user);
             return new ModelAndView(new RedirectView("LoginPage"));
         }
         
