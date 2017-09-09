@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import org.hibernate.Hibernate;
 import ru.tiger.bookprototype.dao.RoleDAO;
 import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.entity.Role;
@@ -29,11 +30,17 @@ public class UserServiceImpl implements UserService {
         Set<Role> roles = new HashSet<>();
         roles.add(roleDao.getOne(1L));
         user.setRoles(roles);
+        
+        System.out.println("Юзер пытается заптсаться" + user);
         userDao.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userDao.findByUsername(username);
+        User user = userDao.findByUsername(username);
+        if (Hibernate.isInitialized(user.getRoles())) {
+            Hibernate.initialize(user.getRoles());
+        }
+        return user;
     }
 }
