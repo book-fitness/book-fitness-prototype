@@ -3,6 +3,10 @@
     
     <display-name>BookPrototype</display-name>
     
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/appconfig-root.xml</param-value>
@@ -31,11 +35,6 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
     
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
-    
-    
     <session-config>
         <session-timeout>
             30
@@ -52,7 +51,7 @@
     <!-- page on load-->
     <!--
     <welcome-file-list>
-        <welcome-file>redirectPage.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     -->
     <!-- error page -->
