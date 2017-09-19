@@ -27,8 +27,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        Role role = roleDao.findOne(1L);
         Set<Role> roles = new HashSet<>();
-        roles.add(roleDao.getOne(1L));
+        roles.add(role);
         user.setRoles(roles);
         userDao.save(user);
     }
@@ -36,9 +37,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         User user = userDao.findByUsername(username);
-        if (Hibernate.isInitialized(user.getRoles())) {
+        /*if (Hibernate.isInitialized(user.getRoles())) {
             Hibernate.initialize(user.getRoles());
-        }
+        }*/
         return user;
     }
 }
