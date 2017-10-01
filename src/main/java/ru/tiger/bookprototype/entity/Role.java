@@ -3,6 +3,8 @@ package ru.tiger.bookprototype.entity;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +20,8 @@ public class Role implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    private String name;
+    @Enumerated(EnumType.STRING)
+    private RoleType name;
     
     @ManyToMany
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "role_id"),
@@ -33,11 +36,11 @@ public class Role implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
+    public RoleType getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(RoleType name) {
         this.name = name;
     }
     
@@ -63,6 +66,11 @@ public class Role implements Serializable {
             return false;
         }
         Role other = (Role) object;
+        
+        if (name == other.name) {
+            return true;
+        }
+        
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +79,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return name;
+        return name.name();
     }
     
 }

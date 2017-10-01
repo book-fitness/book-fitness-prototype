@@ -53,16 +53,16 @@
             <form:input type="text" path="phone" class="width-full" placeholder="Введите Ваш номер телефона"></form:input>
         </spring:bind>
 		
+        <spring:bind path="email">
+            <label class="label-text">E-mail</label>
+            <form:errors path="email" cssClass="error-msg"></form:errors>
+            <form:input type="text" path="email" class="width-full" placeholder="E-mail"></form:input>
+        </spring:bind>
+            
         <spring:bind path="password">
             <label class="label-text">Пароль</label>
             <form:errors path="password" cssClass="error-msg"></form:errors>
             <form:input type="password" path="password" class="width-full" placeholder="Ваш пароль"></form:input>
-        </spring:bind>
-
-        <spring:bind path="email">
-            <label class="label-text">Пароль</label>
-            <form:errors path="email" cssClass="error-msg"></form:errors>
-            <form:input type="text" path="email" class="width-full" placeholder="E-mail"></form:input>
         </spring:bind>
         
         <spring:bind path="confirmPassword">
