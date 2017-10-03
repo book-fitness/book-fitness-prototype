@@ -1,4 +1,3 @@
-
 package ru.tiger.bookprototype.servlet.listener;
 
 import java.util.List;
