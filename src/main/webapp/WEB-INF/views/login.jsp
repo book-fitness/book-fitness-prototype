@@ -7,48 +7,48 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<html>
+    <head>
+        <title>Вход</title>
+        <meta charset="utf-8">
+       	<link href="${contextPath}/resources/css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1 class="page-header-text center">LitFit.ru</h1>
+            </div>
+            
+            <div class="content">
+                <div class="form">
+                    <h1 class="form-header-text center">Войти в систему</h1>
+                    <form method="POST" action="${contextPath}/login" class="width-full">
+                        <label class="label-text">Логин</label>
+                        <div class="form-group ${error != null ? 'has-error' : ''}">
+                            <input type="text" name="username" class="width-full" placeholder="Ваше Имя" autofocus="true">
+                            <span>${message}</span>
 
-    <title>Log in with your account</title>
+                            <span style="float:right;" class="label-text"><a href="">Забыли пароль?</a></span>
+                            <label class="label-text">Пароль</label>
+                            <input type="text" name="password" class="width-full" placeholder="Ваш пароль"/>
+                            <span class="error-msg">${error}</span>
+                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/common.css" rel="stylesheet">
+                            <!--<label class="label-text">Запомнить меня</label><input type="checkbox" name="_spring_security_remember_me" checked>-->
 
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                            <input type="submit" value="Войти" class="form-btn width-full">
+                        </div>
+                    </form>
 
-</head>
-
-<body>
-
-<div class="container">
-
-    <form method="POST" action="${contextPath}/login" class="form-signin">
-        <h2 class="form-heading">Log in</h2>
-
-        <div class="form-group ${error != null ? 'has-error' : ''}">
-            <span>${message}</span>
-            <input name="username" type="text" class="form-control" placeholder="Username"
-                   autofocus="true"/>
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
-            <span>${error}</span>
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Log In</button>
-            <h4 class="text-center"><a href="${contextPath}/registration">Create an account</a></h4>
-        </div>
-
-    </form>
-
-</div>
-<!-- /container -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-</body>
+                    <p class="label-text center">Или войти через социальные сети</p>
+                    <div>VK/FACEBOOK/MAIL.RU/ (See ulogin.ru)</div>
+                    <hr style="width:180px;">
+                    <p class="label-text center">Еще не зарегистрировались в LitFit?</p>
+                    <p class="label-text center"><a href="${contextPath}/registration">Регистрация</a></p>
+                </div>
+                <div class="footer"></div>
+            </div>
+            <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+    </body>
 </html>
