@@ -1,6 +1,6 @@
 package ru.tiger.bookprototype.servlet.listener;
 
-import com.mysql.jdbc.AbandonedConnectionCleanupThread;
+//import com.mysql.jdbc.AbandonedConnectionCleanupThread;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -19,7 +19,7 @@ public class BPContextListener implements ServletContextListener {
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
         System.out.println("Finish servlet context...");
-        System.out.println("Try stopped MySQL AbandonedConnectionCleanupThread");
-        AbandonedConnectionCleanupThread.checkedShutdown();
+        //System.out.println("Try stopped MySQL AbandonedConnectionCleanupThread");
+        //AbandonedConnectionCleanupThread.checkedShutdown();
     }
 }
