@@ -1,0 +1,5 @@
+/* 
+ * Global functions and objecta.
+ */
+
+

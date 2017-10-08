@@ -1,0 +1,75 @@
+/*
+Styles for welcome.jsp
+*/
+/* 
+    Created on : 03.10.2017, 18:37:12
+    Author     : Tiger
+*/
+
+.header {
+    background-color: #777;
+    height: 50px;
+}
+
+.header div {
+    display: inline-block;
+    height: 50px;
+}
+
+#project-logo h1 {
+    margin: 4px 0 0 80px;
+    font-weight: bold;
+    color: white;
+    font-family: verdana;
+}
+
+.header .search input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.header .top-buttons {
+    float: right;
+    margin-right: 35px;
+}
+
+.header .top-buttons a {
+    font-weight: bold;
+    color: white;
+    font-size: 14px;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
+.header .top-buttons li {
+    list-style: none;
+    display: inline;
+    padding: 15px;
+    
+}
+
+.left-side-bar {
+    width: 300px;
+}
+
+.user-info {
+    margin: 20px;
+    width: 260px;
+    border: 1px solid black;
+}
+
+.user-info td {
+    width: 130px;
+}
+
+.user-info tr:first-child {
+    color: #888;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.user-status {
+    font-style: italic;
+    color: #888;
+    font-size: 14px;
+}
