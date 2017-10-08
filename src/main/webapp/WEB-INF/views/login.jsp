@@ -10,6 +10,7 @@
 <html>
     <head>
         <title>Вход</title>
+        <script src="//ulogin.ru/js/ulogin.js"></script>
         <meta charset="utf-8">
        	<link href="${contextPath}/resources/css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="css/style.css">
@@ -24,10 +25,10 @@
                 <div class="form">
                     <h1 class="form-header-text center">Войти в систему</h1>
                     <form method="POST" action="${contextPath}/login" class="width-full">
-                        <label class="label-text">Логин</label>
+                        <label class="label-text">Логин</label><span class="error-msg">${message}</span>
                         <div class="form-group ${error != null ? 'has-error' : ''}">
                             <input type="text" name="username" class="width-full" placeholder="Ваше Имя" autofocus="true">
-                            <span>${message}</span>
+                            
 
                             <span style="float:right;" class="label-text"><a href="">Забыли пароль?</a></span>
                             <label class="label-text">Пароль</label>
@@ -42,7 +43,9 @@
                     </form>
 
                     <p class="label-text center">Или войти через социальные сети</p>
-                    <div>VK/FACEBOOK/MAIL.RU/ (See ulogin.ru)</div>
+                    <!--<div>VK/FACEBOOK/MAIL.RU/ (See ulogin.ru)</div>-->
+        
+<div class="center" id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2F;mobilebuttons=0;"></div>
                     <hr style="width:180px;">
                     <p class="label-text center">Еще не зарегистрировались в LitFit?</p>
                     <p class="label-text center"><a href="${contextPath}/registration">Регистрация</a></p>

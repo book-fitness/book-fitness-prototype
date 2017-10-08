@@ -6,7 +6,7 @@
     <artifactId>BookPrototype</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-
+    
     <name>BookPrototype</name>
 
     <properties>
@@ -124,6 +124,14 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
+        
+        <!--ULogin-->
+        <dependency>
+            <groupId>ru.simplex_software</groupId>
+            <artifactId>ulogin_spring_security</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        
     </dependencies>
 
     <build>
@@ -173,6 +181,26 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <!--ULogin-->
+            <!--
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            -->
+            
+          
         </plugins>
     </build>
     <repositories>
@@ -182,4 +210,13 @@
             <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
+    <!--
+    <distributionManagement>
+        <repository>
+            <id>simplex-ci</id>
+            <layout>default</layout>
+            <url>https://github.com/dmrzh/ulogin_spring_security.git</url>
+        </repository>
+    </distributionManagement>
+    -->
 </project>
