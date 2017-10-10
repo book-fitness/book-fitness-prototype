@@ -3,11 +3,12 @@
     
     <display-name>BookPrototype</display-name>
     
-    <!--
+    
     <listener>
         <description>Main BookPrototype servlet context listener</description>
         <listener-class>ru.tiger.bookprototype.servlet.listener.BPContextListener</listener-class>
     </listener>
+    <!--
     <listener>
         <description>Mechanism to prevent memory leaks in SQL connection driver</description>
         <listener-class>ru.tiger.bookprototype.servlet.listener.JdbcDriverUnregisteringListener</listener-class>

@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.Enumeration;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import ru.tiger.bookprototype.config.Config;
 
 /**
  * Thanks
@@ -21,7 +23,7 @@ public class JdbcDriverUnregisteringListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent event) {
-        logger = Logger.getLogger(getClass());
+        logger = LogManager.getLogger(Config.LOGGER_NAME);
         deregisterDrivers(getDrivers());
     }
 
