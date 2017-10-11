@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.entity;
+package ru.tiger.bookprototype.entity.enums;
 
 /**
  *

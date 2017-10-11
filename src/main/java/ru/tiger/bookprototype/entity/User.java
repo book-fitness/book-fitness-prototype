@@ -1,5 +1,6 @@
 package ru.tiger.bookprototype.entity;
 
+import ru.tiger.bookprototype.entity.enums.AuthType;
 import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;

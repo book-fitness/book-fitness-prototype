@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.tiger.bookprototype.dao.RoleDAO;
 import ru.tiger.bookprototype.entity.Role;
-import ru.tiger.bookprototype.entity.RoleType;
+import ru.tiger.bookprototype.entity.enums.RoleType;
 
 /**
  *
