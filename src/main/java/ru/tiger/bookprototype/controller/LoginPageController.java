@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.RedirectView;
 import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.LoginService;
-import ru.tiger.bookprototype.service.LoginServiceImpl;
+import ru.tiger.bookprototype.service.impl.LoginServiceImpl;
 import ru.tiger.bookprototype.repository.UserRepository;
 
 @Deprecated

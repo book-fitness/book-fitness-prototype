@@ -1,7 +1,8 @@
-package ru.tiger.bookprototype.service;
+package ru.tiger.bookprototype.service.impl;
 
 import javax.servlet.http.HttpSession;
 import ru.tiger.bookprototype.entity.User;
+import ru.tiger.bookprototype.service.LoginService;
 
 public class LoginServiceImpl implements LoginService {
 

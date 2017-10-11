@@ -17,7 +17,7 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.service.LoginService;
-import ru.tiger.bookprototype.service.LoginServiceImpl;
+import ru.tiger.bookprototype.service.impl.LoginServiceImpl;
 
 //@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {

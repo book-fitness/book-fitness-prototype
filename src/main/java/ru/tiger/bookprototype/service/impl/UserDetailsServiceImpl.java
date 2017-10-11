@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.service;
+package ru.tiger.bookprototype.service.impl;
 
 import ru.tiger.bookprototype.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;

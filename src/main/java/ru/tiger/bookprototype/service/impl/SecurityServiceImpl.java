@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.service;
+package ru.tiger.bookprototype.service.impl;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -9,6 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+import ru.tiger.bookprototype.service.SecurityService;
 
 @Service
 public class SecurityServiceImpl implements SecurityService {

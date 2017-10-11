@@ -1,4 +1,4 @@
-package ru.tiger.bookprototype.service;
+package ru.tiger.bookprototype.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -11,6 +11,7 @@ import ru.tiger.bookprototype.entity.Role;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.repository.RoleRepository;
 import ru.tiger.bookprototype.repository.UserRepository;
+import ru.tiger.bookprototype.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {

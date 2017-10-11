@@ -39,7 +39,7 @@
     </authentication-manager>
 
     <beans:bean id="userDetailsServiceImpl"
-                class="ru.tiger.bookprototype.service.UserDetailsServiceImpl">
+                class="ru.tiger.bookprototype.service.impl.UserDetailsServiceImpl">
     </beans:bean>
 
     <beans:bean id="encoder"
