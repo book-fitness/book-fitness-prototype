@@ -1,10 +1,18 @@
 package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -17,6 +25,23 @@ public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id")
+    private User publisher;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date publicationDate;
+    
+    @Column(length = 200)
+    private String name;
+    
+    @Column(length = 1000)
+    private String annotation;
+    
+    @Column(length = 1000)
+    private String coverPath;
+    //private byte[] cover;
 
     public Long getId() {
         return id;
@@ -26,6 +51,46 @@ public class Book implements Serializable {
         this.id = id;
     }
 
+    public User getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(User publisher) {
+        this.publisher = publisher;
+    }
+
+    public Date getPublicationDate() {
+        return publicationDate;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAnnotation() {
+        return annotation;
+    }
+
+    public void setAnnotation(String annotation) {
+        this.annotation = annotation;
+    }
+
+    public String getCoverPath() {
+        return coverPath;
+    }
+
+    public void setCoverPath(String coverPath) {
+        this.coverPath = coverPath;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;
