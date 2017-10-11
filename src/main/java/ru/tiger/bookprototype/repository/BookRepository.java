@@ -1,8 +1,8 @@
-package ru.tiger.bookprototype.dao;
+package ru.tiger.bookprototype.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.tiger.bookprototype.entity.Book;
 
-public interface BookDAO extends JpaRepository<Book, Long>{
+public interface BookRepository extends JpaRepository<Book, Long>{
     
 }

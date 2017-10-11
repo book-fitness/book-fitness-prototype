@@ -1,9 +1,9 @@
-package ru.tiger.bookprototype.dao;
+package ru.tiger.bookprototype.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import ru.tiger.bookprototype.entity.UserLike;
 
 
-public interface UserLikeDAO extends JpaRepository<UserLike, Long> {
+public interface UserLikeRepository extends JpaRepository<UserLike, Long> {
     
 }

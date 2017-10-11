@@ -7,21 +7,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
+import ru.tiger.bookprototype.repository.UserRepository;
 
 @Deprecated
 public class RegistrationPageController implements Controller {
     
-    private UserDAO userDAO;
+    private UserRepository userRepo;
 
-    public UserDAO getUserDAO() {
-        return userDAO;
+    public UserRepository getUserRepo() {
+        return userRepo;
     }
 
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public void setUserRepo(UserRepository userRepo) {
+        this.userRepo = userRepo;
     }
     
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
@@ -53,10 +53,10 @@ public class RegistrationPageController implements Controller {
         user.setPhone(phone);
         
         
-        if (userDAO.findByUsername(user.getUsername()) != null) {
+        if (userRepo.findByUsername(user.getUsername()) != null) {
             return new ModelAndView(new RedirectView("ErrorPage"));
         } else {
-            userDAO.save(user);
+            userRepo.save(user);
             return new ModelAndView(new RedirectView("LoginPage"));
         }
         

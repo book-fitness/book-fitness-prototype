@@ -7,23 +7,23 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 import org.springframework.web.servlet.view.RedirectView;
-import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.db.MD5Util;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.LoginService;
 import ru.tiger.bookprototype.service.LoginServiceImpl;
+import ru.tiger.bookprototype.repository.UserRepository;
 
 @Deprecated
 public class LoginPageController implements Controller {
     
-    private UserDAO userDAO;
+    private UserRepository userRepo;
 
-    public UserDAO getUserDAO() {
-        return userDAO;
+    public UserRepository getUserRepo() {
+        return userRepo;
     }
 
-    public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public void setUserRepo(UserRepository userRepo) {
+        this.userRepo = userRepo;
     }
 
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +42,7 @@ public class LoginPageController implements Controller {
         String password = (String) request.getParameter("password");
         password = MD5Util.getHash(password);
 
-        User user = userDAO.findByUsername(login);
+        User user = userRepo.findByUsername(login);
 
         if (user == null) {
             return new ModelAndView(new RedirectView("RegistrationPage.htm"));

@@ -5,9 +5,9 @@ import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import ru.tiger.bookprototype.dao.RoleDAO;
 import ru.tiger.bookprototype.entity.Role;
 import ru.tiger.bookprototype.entity.enums.RoleType;
+import ru.tiger.bookprototype.repository.RoleRepository;
 
 /**
  *
@@ -17,7 +17,7 @@ import ru.tiger.bookprototype.entity.enums.RoleType;
 public class RolesUpdater implements InitializingBean, DisposableBean {
     
     @Autowired
-    private RoleDAO roleDao;
+    private RoleRepository roleRepo;
     
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -28,13 +28,13 @@ public class RolesUpdater implements InitializingBean, DisposableBean {
         System.out.println("RolesUpdater...");
         
         RoleType[] roles = RoleType.values();
-        List<Role> rolesInDB = roleDao.findAll();
+        List<Role> rolesInDB = roleRepo.findAll();
         
         for (RoleType roleType : roles) {
             Role role = new Role();
             role.setName(roleType);
             if (!rolesInDB.contains(role)) {
-                roleDao.save(role);
+                roleRepo.save(role);
             }
         }
     }

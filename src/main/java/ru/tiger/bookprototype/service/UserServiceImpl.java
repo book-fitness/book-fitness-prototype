@@ -7,19 +7,19 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 import org.hibernate.Hibernate;
-import ru.tiger.bookprototype.dao.RoleDAO;
-import ru.tiger.bookprototype.dao.UserDAO;
 import ru.tiger.bookprototype.entity.Role;
 import ru.tiger.bookprototype.entity.User;
+import ru.tiger.bookprototype.repository.RoleRepository;
+import ru.tiger.bookprototype.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDAO userDao;
+    private UserRepository userRepo;
 
     @Autowired
-    private RoleDAO roleDao;
+    private RoleRepository roleRepo;
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
@@ -27,16 +27,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        Role role = roleDao.findOne(1L);
+        Role role = roleRepo.findOne(1L);
         Set<Role> roles = new HashSet<>();
         roles.add(role);
         user.setRoles(roles);
-        userDao.save(user);
+        userRepo.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        User user = userDao.findByUsername(username);
+        User user = userRepo.findByUsername(username);
         /*if (Hibernate.isInitialized(user.getRoles())) {
             Hibernate.initialize(user.getRoles());
         }*/

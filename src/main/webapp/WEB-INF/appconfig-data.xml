@@ -39,5 +39,5 @@
 
     <tx:annotation-driven/>
 
-    <jpa:repositories base-package="ru.tiger.bookprototype.dao"/>
+    <jpa:repositories base-package="ru.tiger.bookprototype.repository"/>
 </beans>
