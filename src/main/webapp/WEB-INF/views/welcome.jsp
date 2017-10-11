@@ -20,6 +20,7 @@
         <script src="${contextPath}/resources/js/knockout-3.4.2.js"></script>
         <script src="${contextPath}/resources/js/global.js"></script>
         
+        <link rel="stylesheet" href="${contextPath}/resources/font-awesome-4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="${contextPath}/resources/css/global.css">
         <link rel="stylesheet" href="${contextPath}/resources/css/welcome.css">
         
@@ -33,7 +34,7 @@
                     <h1>LitFit.ru</h1>
                 </div>
                 <div class="search">
-                    <input id="search" type="text" size="32" placeholder="Поиск людей">
+                    <input id="search" type="text" size="32" placeholder="Поиск людей "><i class="fa fa-search" aria-hidden="true"></i>
                 </div>
                 <div class="top-buttons">
                     <ul>
@@ -63,13 +64,13 @@
                 </div>
                 <div class="user-menu">
                     <ul>
-                        <li>Задания</li>
-                        <li>Мои книги</li>
-                        <li>Интересное</li>
-                        <li>Моя команда</li>
-                        <li>Рейтинг</li>
-                        <li>О проекте</li>
-                        <li>Мой профиль</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Задания</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Мои книги</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Интересное</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Моя команда</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Рейтинг</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>О проекте</li>
+                        <li><i class="fa fa-smile-o" aria-hidden="true"></i>Мой профиль</li>
                     </ul>
                 </div>
             </div>
@@ -79,11 +80,51 @@
                     <form id="logoutForm" method="POST" action="${contextPath}/logout">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
-
-                    <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a>
-                    </h2>
-
+                    <h2>Welcome ${pageContext.request.userPrincipal.name} | <a onclick="document.forms['logoutForm'].submit()">Logout</a></h2>
                 </c:if>
+                
+                <hr>
+                
+                <ul class="tab-header">
+                    <li>Лента</li>
+                    <li>Новости</li>
+                </ul>
+                
+                <div class="news-line">
+                    <div class="article">
+                        <h2>Заголовок статьи заголовок статьи</h2>
+                        <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>17.08.2017</div>
+                        <p>Текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи. <a href="">Читать полностью</a></p>
+                        <div>
+                            <div class="likes-count"><i class="fa fa-heart" aria-hidden="true"></i>135</div>
+                            <div class="comments-count"><i class="fa fa-comment-o" aria-hidden="true"></i>35</div>
+                            <div class=""><i class="fa fa-bullhorn" aria-hidden="true"></i>vk,fb,ok,g+,etc.</div>
+                        </div>
+                    </div>
+                    <div class="article">
+                        <h2>Заголовок статьи заголовок статьи</h2>
+                        <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>17.08.2017</div>
+                        <p>Текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи. <a href="">Читать полностью</a></p>
+                        <div>
+                            <div class="likes-count"><i class="fa fa-heart" aria-hidden="true"></i>135</div>
+                            <div class="comments-count"><i class="fa fa-comment-o" aria-hidden="true"></i>35</div>
+                            <div class=""><i class="fa fa-bullhorn" aria-hidden="true"></i>vk,fb,ok,g+,etc.</div>
+                        </div>
+                    </div>
+                    <div class="article">
+                        <h2>Заголовок статьи заголовок статьи</h2>
+                        <div class="date"><i class="fa fa-calendar" aria-hidden="true"></i>17.08.2017</div>
+                        <p>Текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи текст статьи. <a href="">Читать полностью</a></p>
+                        <div>
+                            <div class="likes-count"><i class="fa fa-heart" aria-hidden="true"></i>135</div>
+                            <div class="comments-count"><i class="fa fa-comment-o" aria-hidden="true"></i>35</div>
+                            <div class=""><i class="fa fa-bullhorn" aria-hidden="true"></i>vk,fb,ok,g+,etc.</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="news">
+                </div>
             </div>
             
             <div class="footer">
