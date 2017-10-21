@@ -44,8 +44,12 @@
 
                     <p class="label-text center">Или войти через социальные сети</p>
                     <!--<div>VK/FACEBOOK/MAIL.RU/ (See ulogin.ru)</div>-->
-        
-<div class="center" id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2F;mobilebuttons=0;"></div>
+                    
+                    <%-- uLogin widget begin --%>
+                    <script src="//ulogin.ru/js/ulogin.js"></script>
+                    <div id="uLogin" data-ulogin="display=panel;theme=classic;fields=first_name,last_name;providers=vkontakte,odnoklassniki,mailru,facebook;hidden=other;redirect_uri=http%3A%2F%2Flocalhost%3A8080%2FBookPrototype%2Flogin;mobilebuttons=0;"></div>
+                    <%-- uLogin widget end --%>
+                    
                     <hr style="width:180px;">
                     <p class="label-text center">Еще не зарегистрировались в LitFit?</p>
                     <p class="label-text center"><a href="${contextPath}/registration">Регистрация</a></p>

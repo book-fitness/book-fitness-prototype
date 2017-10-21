@@ -23,7 +23,7 @@ public class ULoginSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         System.out.println("==== ULoginSecurityConfig: configureGlobal()");
         
-        auth.authenticationProvider(new UloginAuthentifiactionProvider("locahost"));
+        auth.authenticationProvider(new UloginAuthentifiactionProvider("localhost:8080"));
     }
 
     @Override
@@ -35,8 +35,12 @@ public class ULoginSecurityConfig extends WebSecurityConfigurerAdapter {
 
         HttpSecurity httpSecurity = http.
                 addFilterBefore(uloginFilter, AnonymousAuthenticationFilter.class);
-        httpSecurity.authorizeRequests().antMatchers("/login").permitAll()
-                .anyRequest().authenticated() ;
+        httpSecurity
+                .authorizeRequests()
+                .antMatchers("/login")
+                .permitAll()
+                .anyRequest()
+                .authenticated();
         httpSecurity.formLogin().loginPage("/login");
 
     }
