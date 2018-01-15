@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ImportResource;
 import ru.tiger.bookprototype.config.Config;
 import ru.tiger.bookprototype.config.ServletConfig;
 
@@ -11,7 +12,10 @@ import ru.tiger.bookprototype.config.ServletConfig;
  *
  * @author Tiger
  */
+
 @SpringBootApplication
+//@SpringBootApplication(scanBasePackages = "ru.tiger.bookprototype.**")
+//@ImportResource("classpath*:WEB-INF/appconfig-root.xml")
 public class Main {
     public static void main(String[] args) {
         System.out.println("main()");
@@ -22,6 +26,7 @@ public class Main {
         
         new SpringApplicationBuilder()
            .sources(ServletConfig.class)
+           .sources(Main.class)
            //.sources(SampleController.class)                
            //.properties(props)
            .run(args);

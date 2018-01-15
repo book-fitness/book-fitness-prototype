@@ -16,7 +16,7 @@ public class Config {
             System.out.println("Use port from ENV: " + port);
         } catch (NumberFormatException e) {
             System.out.println(e);
-            e.printStackTrace();
+            //e.printStackTrace();
             System.out.println("Use default port: " + port);
         }
         
