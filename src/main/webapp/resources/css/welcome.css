@@ -50,6 +50,8 @@ Styles for welcome.jsp
 
 .left-side-bar {
     width: 300px;
+    height: 100%;
+    float: left;
 }
 
 .user-info {
@@ -72,4 +74,23 @@ Styles for welcome.jsp
     font-style: italic;
     color: #888;
     font-size: 14px;
+}
+
+.user-menu ul {
+    list-style: none;
+}
+
+.user-menu i {
+    margin-right: 10px;
+}
+
+.content {
+    border: 1px solid red;
+    margin-top: 20px;
+    margin-left: 300px;
+    width: calc(100% - 320px)
+}
+
+.content > div {
+    border: 1px solid magenta;
 }
