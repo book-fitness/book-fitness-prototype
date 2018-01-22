@@ -127,6 +127,26 @@
                     <div class="news">Новости</div>
                 </div>
                 
+                <div id="tasks">
+                    <div class="tab-header">Задания</div>
+                    <div>
+                        Тут должна быть информация о книге
+                    </div>
+                    
+                    Поясняющий текст что это за штука<br>
+                    
+                    <div>
+                        <div style="border-radius:30px 30px;width:60px;height:60px;background-color:green;display:inline-block;"></div>
+                        <div style="border-radius:30px 30px;width:60px;height:60px;background-color:red;display:inline-block;"></div>
+                        <div style="border-radius:30px 30px;width:60px;height:60px;background-color:orange;display:inline-block;"></div>
+                        <div style="border-radius:30px 30px;width:60px;height:60px;background-color:lightgray;display:inline-block;"></div>
+                    </div>
+                    
+                    Сравнительная шкала<br>
+                    <div style="width:75%;height:4px;background-color:lightgray;border-left:200px solid green;box-sizing: border-box;"></div>
+                    <br>
+                </div>
+                
                 <div id="my-books">Мои книги</div>
                 
                 <div id="post-editor">
