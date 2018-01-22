@@ -76,12 +76,28 @@ Styles for welcome.jsp
     font-size: 14px;
 }
 
+.user-menu {
+    width: 260px;
+    margin: 0 20px 0 20px;
+}
+
 .user-menu ul {
     list-style: none;
+    font-weight: bold;
+    padding: 0;
+}
+
+.user-menu li {
+    padding: 10px 0 10px 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.user-menu li:last-child {
+    border-bottom: none;
 }
 
 .user-menu i {
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
 .content {
