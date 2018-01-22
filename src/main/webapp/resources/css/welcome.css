@@ -110,3 +110,52 @@ Styles for welcome.jsp
 .content > div {
     border: 1px solid magenta;
 }
+
+#rating li {
+    color: green;
+}
+
+#rating li span {
+    color: black;
+}
+
+.stack-chart {
+    height: 100px;
+    margin: 20px 0 20px 0;
+}
+
+.stack-chart > .grid {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.stack-chart > .grid > div:first-child {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    height: 30px;
+    margin: 10px 0 30px 0;
+}
+
+.stack-chart > .grid > div:last-child {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    height: 30px;
+    margin: 30px 0 0 0;
+}
+
+.stack-chart > .charts {
+    position: relative;
+    top: -166px;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.stack-chart > .charts > div {
+    width: 25px;
+    margin: 0 20px 0 0;
+    display: inline-block;
+}

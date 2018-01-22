@@ -141,7 +141,95 @@
                 
                 <div id="my-team">Моя команда</div>
                 
-                <div id="rating">Рейтинг</div>
+                <div id="rating">
+                    <div class="tab-header">Рейтинг</div>
+                    <hr>
+                    <ul>
+                        <li>
+                            <span>Я относитель команды</span>
+                            <div class="stack-chart">
+                                <div class="grid">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="charts">
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Я относительно других участников</span>
+                            <div class="stack-chart">
+                                <div class="grid">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="charts">
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Список по баллам</span>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span>Моя команда относительно других участников</span>
+                            <div class="stack-chart">
+                                <div class="grid">
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="charts">
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                    <div class="stack-chart" style="border-bottom: 20px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 40px solid grey;"></div>
+                                    <div class="stack-chart" style="border-bottom: 60px solid orange;"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span>Лучшие команды</span>
+                            <ul>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 
                 <div id="about-project">О проекте</div>
                 
