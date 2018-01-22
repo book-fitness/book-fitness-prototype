@@ -19,6 +19,9 @@
 
         <logout logout-success-url="/login?logout"/>
         
+        <intercept-url pattern="/api/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
+        <csrf disabled="true"/>
+        
         <!--
         <anonymous enabled="true" username="guest" granted-authority="ROLE_ANONYMOUS"/>
         <intercept-url pattern="/welcome" access="hasRole('ROLE_ANONYMOUS')"/>
@@ -31,7 +34,7 @@
         <remember-me/>
         -->
     </http>
-
+    
     <authentication-manager alias="authenticationManager">
         <authentication-provider user-service-ref="userDetailsServiceImpl">
             <password-encoder ref="encoder"></password-encoder>
