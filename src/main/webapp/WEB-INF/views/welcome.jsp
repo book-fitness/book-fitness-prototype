@@ -16,8 +16,8 @@
 
         <title>Добро пожаловать!</title>
         
-        <script src="${contextPath}/resources/js/jquery-3.1.1.js"></script>
-        <script src="${contextPath}/resources/js/knockout-3.4.2.js"></script>
+        <script src="${contextPath}/resources/js/libs/jquery-3.1.1.js"></script>
+        <script src="${contextPath}/resources/js/libs/knockout-3.4.2.js"></script>
         <script src="${contextPath}/resources/js/global.js"></script>
         
         <link rel="stylesheet" href="${contextPath}/resources/font-awesome-4.7.0/css/font-awesome.min.css">
