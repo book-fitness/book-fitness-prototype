@@ -28,6 +28,75 @@
         <link rel="stylesheet" href="${contextPath}/resources/css/welcome.css">
         
         <%--<link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">--%>
+        
+        <script>
+            
+
+//How to check?
+
+//GET
+//$.ajax({url:"api/post/1",method:"GET",type:"text/json",success:function(data){console.log("Success:");console.log(data);},error:function(data){console.log("Error: "+data);}});
+
+//POST
+
+function sendArticle() {
+    
+    
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+    
+    var articleHeader = document.forms["articleEditor"].header.value;
+    var articleContent = document.forms["articleEditor"].content.value;
+    
+    console.log("<< sendArticle");
+    console.log(articleHeader);
+    console.log(articleContent);
+    
+    $.ajax({
+        url: "api/article",
+        method: "POST",
+        headers: {[header]: token,'Accept': 'application/json','Content-Type': 'application/json'},
+        type: "application/json",
+        data: JSON.stringify({"header": articleHeader, "content": articleContent}),
+        success:function(data){
+            console.log("Success:");
+            console.log(data);
+        },
+        error:function(data){
+            console.log("Error: "+data);
+            window.z = data;
+        }
+    });
+}
+
+/*
+function post_post() {
+    var token = $("meta[name='_csrf']").attr("content");
+    var parameter = $("meta[name='_csrf_parameter']").attr("content");
+    $.ajax({
+        url:"api/post",
+        method:"POST",
+        type:"application/json",
+        data:'{"header":"Заголовок","content":"Текст статьи",[parameter]:token}',
+        success:function(data){
+            console.log("Success:");
+            console.log(data);
+        },
+        error:function(data){
+            console.log("Error: "+data);
+        }
+    });
+}
+*/
+
+
+
+
+//PUT
+
+//DELETE
+
+        </script>
     </head>
     <body>
 
@@ -155,10 +224,11 @@
                 <div id="post-editor">
                     Написать статью
                     
-                    <form name="postEditor">
+                    <form name="articleEditor">
                         <input name="header" type="text" value="Заголовок статьи" /><br/>
-                        <textarea name="text" cols="80" rows="10"></textarea><br/>
-                        <button name="send" onclick="alert('Текст для отправки\n' + document.forms.postEditor.text.value);return false;">Отправить</button>
+                        <textarea name="content" cols="80" rows="10"></textarea><br/>
+                        <!--<button name="send" onclick="alert('Текст для отправки\n' + document.forms.postEditor.text.value);return false;">Отправить</button>-->
+                        <button name="send" onclick="sendArticle();return false;">Отправить</button>
                     </form>
                 </div>
                 

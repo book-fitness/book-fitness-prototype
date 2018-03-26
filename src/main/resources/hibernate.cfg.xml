@@ -52,7 +52,7 @@ Contributor(s):
     <mapping class="ru.tiger.bookprototype.entity.Role"/>
     <mapping class="ru.tiger.bookprototype.entity.Comment"/>
     <mapping class="ru.tiger.bookprototype.entity.UserLike"/>
-    <mapping class="ru.tiger.bookprototype.entity.Post"/>
+    <mapping class="ru.tiger.bookprototype.entity.Article"/>
     <mapping class="ru.tiger.bookprototype.entity.Book"/>
   </session-factory>
 </hibernate-configuration>
