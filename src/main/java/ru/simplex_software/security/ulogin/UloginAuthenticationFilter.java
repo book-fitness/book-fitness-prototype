@@ -1,5 +1,5 @@
 package ru.simplex_software.security.ulogin;
-
+/*
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
@@ -13,14 +13,14 @@ import java.io.IOException;
 
 /**
  * Получает ulogin token из запроса.
- */
-public class UloginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
+ *//*
+public class UloginAuthenticationFilter extends AbstractAuthenticationProcessingFilter {*/
 
     /**
      * создаёт UloginAuthenticationFilter
      * @param url который слушает этот фильтр.
      */
-
+/*
     public UloginAuthenticationFilter(String url) {
         super(new AntPathRequestMatcher(url, "POST"));
 
@@ -39,3 +39,4 @@ public class UloginAuthenticationFilter extends AbstractAuthenticationProcessing
         return this.getAuthenticationManager().authenticate(authRequest);
     }
 }
+*/

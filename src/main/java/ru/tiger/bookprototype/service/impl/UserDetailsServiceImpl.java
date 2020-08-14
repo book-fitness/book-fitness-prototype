@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.service.impl;
-
+/*
 import ru.tiger.bookprototype.entity.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,3 +39,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }
+*/

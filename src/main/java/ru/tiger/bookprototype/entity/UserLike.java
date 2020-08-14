@@ -11,7 +11,7 @@ import javax.persistence.Id;
  * @author Tiger
  */
 @Entity
-public class UserLike implements Serializable {
+public class UserLike implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,6 +49,5 @@ public class UserLike implements Serializable {
     @Override
     public String toString() {
         return "ru.tiger.bookprototype.entity.Like[ id=" + id + " ]";
-    }
-    
+    }  
 }

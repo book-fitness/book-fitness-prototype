@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.service.impl;
-
+/*
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,3 +48,4 @@ public class SecurityServiceImpl implements SecurityService {
     }
 }
 
+*/

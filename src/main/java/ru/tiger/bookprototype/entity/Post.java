@@ -19,29 +19,25 @@ import javax.persistence.TemporalType;
  * @author Tiger
  */
 @Entity
-public class Book implements Serializable, AbstractEntity {
+public class Post implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id")
-    private User publisher;
-    
     @Temporal(TemporalType.TIMESTAMP)
     private Date publicationDate;
     
     @Column(length = 200)
-    private String name;
+    private String header;
     
-    @Column(length = 1000)
-    private String annotation;
+    @Column(length = 10000)
+    private String content;
     
-    @Column(length = 1000)
-    private String coverPath;
-    //private byte[] cover;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "user_id")
+    private User author;
 
     public Long getId() {
         return id;
@@ -49,14 +45,6 @@ public class Book implements Serializable, AbstractEntity {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public User getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(User publisher) {
-        this.publisher = publisher;
     }
 
     public Date getPublicationDate() {
@@ -67,28 +55,28 @@ public class Book implements Serializable, AbstractEntity {
         this.publicationDate = publicationDate;
     }
 
-    public String getName() {
-        return name;
+    public String getHeader() {
+        return header;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHeader(String header) {
+        this.header = header;
     }
 
-    public String getAnnotation() {
-        return annotation;
+    public String getContent() {
+        return content;
     }
 
-    public void setAnnotation(String annotation) {
-        this.annotation = annotation;
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    public String getCoverPath() {
-        return coverPath;
+    public User getAuthor() {
+        return author;
     }
 
-    public void setCoverPath(String coverPath) {
-        this.coverPath = coverPath;
+    public void setAuthor(User author) {
+        this.author = author;
     }
     
     @Override
@@ -101,10 +89,10 @@ public class Book implements Serializable, AbstractEntity {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Book)) {
+        if (!(object instanceof Post)) {
             return false;
         }
-        Book other = (Book) object;
+        Post other = (Post) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -113,7 +101,7 @@ public class Book implements Serializable, AbstractEntity {
 
     @Override
     public String toString() {
-        return "ru.tiger.bookprototype.entity.Book[ id=" + id + " ]";
+        return "ru.tiger.bookprototype.entity.Post[ id=" + id + " ]";
     }
     
 }
