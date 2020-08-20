@@ -1,13 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+<web-app version="3.1"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     
     <display-name>BookPrototype</display-name>
     
+    <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
     
     <listener>
         <description>Main BookPrototype servlet context listener</description>
         <listener-class>ru.tiger.bookprototype.servlet.listener.BPContextListener</listener-class>
     </listener>
+    
+    <data-source>
+        <name>java:jboss/datasource/bookprototypesource</name>
+        <url>jdbc:postgresql://localhost:5432/book_prototype</url> 
+        <user>postgres</user>
+        <password>7777</password>
+        <class-name>org.postgresql.ds.PGSimpleDataSource</class-name>
+        <initial-pool-size>5</initial-pool-size>
+        <min-pool-size>1</min-pool-size>
+        <max-pool-size>10</max-pool-size>
+    </data-source>
     <!--
     <listener>
         <description>Mechanism to prevent memory leaks in SQL connection driver</description>
@@ -15,31 +32,25 @@
     </listener>
     -->
     
-    <listener>
+    <!--    <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+    </listener>-->
     
-    <!--
-    <listener>
-        <listener-class>org.springframework.boot.legacy.context.web.SpringBootContextLoaderListener</listener-class>
-    </listener>
-    -->
-    
-    <context-param>
+    <!--    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>/WEB-INF/appconfig-root.xml</param-value>
-    </context-param>
+    </context-param>-->
     
-    <filter>
+    <!--    <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping>-->
     
-    <servlet>
+    <!--    <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
@@ -58,7 +69,7 @@
             30
         </session-timeout>
     </session-config>
-    
+    -->
     
         
     <!-- page on load-->

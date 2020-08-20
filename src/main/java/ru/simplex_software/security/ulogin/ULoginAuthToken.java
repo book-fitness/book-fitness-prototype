@@ -1,10 +1,12 @@
 package ru.simplex_software.security.ulogin;
-
+/*
 import org.springframework.security.authentication.AbstractAuthenticationToken;
-
+*/
 /**
  * AuthenticationToken for UloginAuthentifiactionProvider
  */
+        
+        /*
 public class ULoginAuthToken extends AbstractAuthenticationToken {
     private String token;
     public ULoginUser ULoginUser;
@@ -40,3 +42,4 @@ public class ULoginAuthToken extends AbstractAuthenticationToken {
         return ULoginUser.getIdentity();
     }
 }
+*/

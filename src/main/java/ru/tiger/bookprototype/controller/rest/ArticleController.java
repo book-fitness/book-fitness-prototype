@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.controller.rest;
-
+/*
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -24,9 +24,9 @@ public class ArticleController {
     
     //private Map<Integer, Article> articles = new HashMap<>();
     //private int idCounter = 1;
-    
-    @RequestMapping(path = "/api/article", method = RequestMethod.POST/*, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE*/)
-    public ResponseEntity add(@RequestBody Article article) {
+    */
+   // @RequestMapping(path = "/api/article", method = RequestMethod.POST/*, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE*/)
+   /* public ResponseEntity add(@RequestBody Article article) {
         article = articleRepository.save(article);
         System.out.println("<< Add article: " + article);
         
@@ -63,3 +63,4 @@ public class ArticleController {
         System.out.println("<< Detete article id: " + id);
     }
 }
+*/

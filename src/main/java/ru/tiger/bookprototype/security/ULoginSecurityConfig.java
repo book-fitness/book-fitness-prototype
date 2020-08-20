@@ -1,7 +1,6 @@
 package ru.tiger.bookprototype.security;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -16,19 +15,16 @@ import ru.simplex_software.security.ulogin.UloginAuthentifiactionProvider;
  * Source:
  * https://github.com/dmrzh/ulogin_spring_security/blob/master/src/test/java/ru/simplex_software/security/ulogin/ExampleSecurityConfig.java
  * 
- */
-
-//@Configuration
+ *//*
 @EnableWebSecurity
 public class ULoginSecurityConfig extends WebSecurityConfigurerAdapter {
-    
     AuthenticationManager authManager;
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         System.out.println("==== ULoginSecurityConfig: configureGlobal()");
         
-        auth.authenticationProvider(new UloginAuthentifiactionProvider("localhost:8080"));
+        auth.authenticationProvider(new UloginAuthentifiactionProvider("localhost"));
     }
 
     @Override
@@ -46,7 +42,15 @@ public class ULoginSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-        httpSecurity.formLogin().loginPage("/login");
+        
+        httpSecurity.formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/welcome")
+                .failureForwardUrl("/login?error")
+                .usernameParameter("username")
+                .passwordParameter("password");
 
     }
 }
+
+*/

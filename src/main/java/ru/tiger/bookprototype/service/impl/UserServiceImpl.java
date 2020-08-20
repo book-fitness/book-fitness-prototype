@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.service.impl;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -40,7 +40,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepo.findByUsername(username);
         /*if (Hibernate.isInitialized(user.getRoles())) {
             Hibernate.initialize(user.getRoles());
-        }*/
+        }*//*
         return user;
     }
 }
+*/

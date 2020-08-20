@@ -14,7 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Role implements Serializable {
+public class Role implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
     @Id

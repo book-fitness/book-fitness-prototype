@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.servlet.listener;
-
+/*
 import java.util.List;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
@@ -12,7 +12,7 @@ import ru.tiger.bookprototype.repository.RoleRepository;
 /**
  *
  * @author Tiger
- */
+ *//*
 @Component
 public class RolesUpdater implements InitializingBean, DisposableBean {
     
@@ -44,3 +44,4 @@ public class RolesUpdater implements InitializingBean, DisposableBean {
         
     }
 }
+*/

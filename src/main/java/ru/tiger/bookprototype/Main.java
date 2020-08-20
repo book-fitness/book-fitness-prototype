@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype;
-
+/*
 import java.util.HashMap;
 import java.util.Map;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,11 +12,11 @@ import ru.tiger.bookprototype.config.ServletConfig;
  *
  * @author Tiger
  */
-
+/*
 @SpringBootApplication
 //@SpringBootApplication(scanBasePackages = "ru.tiger.bookprototype.**")
 //@ImportResource("classpath*:WEB-INF/appconfig-root.xml")
-public class Main {
+public class Main {/*
     public static void main(String[] args) {
         System.out.println("main()");
         System.out.println("Start as SpringBoot Application");
@@ -32,3 +32,4 @@ public class Main {
            .run(args);
     }
 }
+*/

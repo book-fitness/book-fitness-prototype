@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.servlet.listener;
-
+/*
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 /**
  *
  * @author Tiger
- */
+ *//*
 @Component
 public class CRefreshedEventHandler implements ApplicationListener<ContextRefreshedEvent> {
     
@@ -22,3 +22,4 @@ public class CRefreshedEventHandler implements ApplicationListener<ContextRefres
     }
     
 }
+*/

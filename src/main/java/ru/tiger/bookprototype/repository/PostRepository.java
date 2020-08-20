@@ -1,9 +1,9 @@
 package ru.tiger.bookprototype.repository;
 /*
 import org.springframework.data.jpa.repository.JpaRepository;
-import ru.tiger.bookprototype.entity.Role;
+import ru.tiger.bookprototype.entity.Post;
 
-public interface RoleRepository extends JpaRepository<Role, Long> {
+public interface PostRepository extends JpaRepository<Post, Long>{
     
 }
 */

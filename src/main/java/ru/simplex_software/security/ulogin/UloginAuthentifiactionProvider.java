@@ -1,5 +1,5 @@
 package ru.simplex_software.security.ulogin;
-
+/*
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationProvider;
@@ -18,20 +18,23 @@ import java.net.URLConnection;
 
 /**
  * AuthenticationProvider проверяет корректность ulogin-токена и заполняет principal ( ULoginUser )
- */
+ *//*
 public class UloginAuthentifiactionProvider implements AuthenticationProvider {
     private static final Logger LOG= LoggerFactory.getLogger(UloginAuthentifiactionProvider.class);
-
+*/
     /**
      * Домен сайта, который производит аутентификацию.
-     */
+     *//*
     private String host;
 
     public UloginAuthentifiactionProvider(String host) {
         this.host=host;
+        
+        System.out.println("<< UloginAuthentifiactionProvider()");
     }
 
  
+    @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         if (!supports(authentication.getClass())) {
             return null;
@@ -83,6 +86,9 @@ public class UloginAuthentifiactionProvider implements AuthenticationProvider {
             LOG.error(ex.getMessage(),ex);
             throw new AuthenticationServiceException(ex.getMessage());
         }
+        javax.swing.JOptionPane.showMessageDialog(null, "<< authenticate: " + uLoginAuthenticationToken);
+        System.out.println("<< authenticate: " + uLoginAuthenticationToken);
+        
         return uLoginAuthenticationToken;
     }
 
@@ -109,4 +115,4 @@ public class UloginAuthentifiactionProvider implements AuthenticationProvider {
     public boolean supports(Class<?> authentication) {
         return ULoginAuthToken.class.isAssignableFrom(authentication);
     }
-}
+}*/

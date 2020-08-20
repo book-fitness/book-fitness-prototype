@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.config;
-
+/*
 import javax.servlet.ServletRegistration;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
@@ -13,7 +13,7 @@ public class ServletConfig {
             int port = Config.getPort();
             System.out.println("<< EmbeddedServletContainerCustomizer " + port);
             container.setPort(port);
-            /*container.addInitializers((sc) -> {
+            container.addInitializers((sc) -> {
                 
                 sc.setInitParameter("contextConfigLocation", "/WEB-INF/appconfig-root.xml");
                 
@@ -28,7 +28,8 @@ public class ServletConfig {
                 srd.addMapping("/");
                 
                 
-            });*/
+            });
         });
     }
 }
+*/

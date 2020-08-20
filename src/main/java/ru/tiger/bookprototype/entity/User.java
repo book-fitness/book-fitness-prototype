@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Transient;
 
 @Entity
-public class User implements Serializable {
+public class User implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
