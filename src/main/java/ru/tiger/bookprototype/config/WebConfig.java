@@ -1,5 +1,5 @@
 package ru.tiger.bookprototype.config;
-
+/*
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -18,5 +18,6 @@ public class WebConfig {
         viewResolver.setPrefix("/WEB-INF/views/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
-    }*/
+    }
 }
+*/
