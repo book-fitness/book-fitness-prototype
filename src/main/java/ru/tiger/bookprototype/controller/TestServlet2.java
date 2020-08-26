@@ -9,7 +9,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
-import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +26,7 @@ public class TestServlet2 extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
             //InitialContext context = new InitialContext();
             //DataSource dataSource = (DataSource) context.lookup("java:jboss/datasources/ExampleDS");
             System.out.println("==== DATA SOURCE: " + dataSource);

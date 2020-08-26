@@ -8,29 +8,23 @@ import javax.persistence.IdClass;
 
 /**
  *
- * @author Tiger
+ * @author Igor
  */
 @Entity
-@IdClass(UserLikeId.class)
-public class UserLike implements Serializable, AbstractEntity {
+@IdClass(CommentLikeId.class)
+public class CommentLike implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
-    @Id @Column(name = "USER_ID")
+    @Id
+    @Column(name = "USER_ID")
     private long userId;
-    @Id @Column(name = "POST_ID")
-    private long postId;
+    @Id
+    @Column(name = "COMMENT_ID")
+    private long commentId;
     @Column(name = "VALUE")
     private boolean value;
-    
-
-    public UserLike() {}
-    
-    @Override
-    public Long getId() {
-        //return id;
-        throw new UnsupportedOperationException("Have not simple key. Only complex key.");
-    }
+    @Column(name = "PARENT_ID")
+    private long parentId;
 
     public long getUserId() {
         return userId;
@@ -40,19 +34,11 @@ public class UserLike implements Serializable, AbstractEntity {
         this.userId = userId;
     }
 
-    public long getPostId() {
-        return postId;
-    }
-
-    public void setPostId(long postId) {
-        this.postId = postId;
+    public long getCommentId() {
+        return commentId;
     }
 
     public boolean isValue() {
-        return value;
-    }
-    
-    public boolean getValue() {
         return value;
     }
 
@@ -60,11 +46,23 @@ public class UserLike implements Serializable, AbstractEntity {
         this.value = value;
     }
 
+    public void setCommentId(long commentId) {
+        this.commentId = commentId;
+    }
+
+    public long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(long parentId) {
+        this.parentId = parentId;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + (int) (this.userId ^ (this.userId >>> 32));
-        hash = 97 * hash + (int) (this.postId ^ (this.postId >>> 32));
+        int hash = 5;
+        hash = 19 * hash + (int) (this.userId ^ (this.userId >>> 32));
+        hash = 19 * hash + (int) (this.commentId ^ (this.commentId >>> 32));
         return hash;
     }
 
@@ -79,18 +77,13 @@ public class UserLike implements Serializable, AbstractEntity {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UserLike other = (UserLike) obj;
+        final CommentLike other = (CommentLike) obj;
         if (this.userId != other.userId) {
             return false;
         }
-        if (this.postId != other.postId) {
+        if (this.commentId != other.commentId) {
             return false;
         }
         return true;
     }
-    
-    @Override
-    public String toString() {
-        return "ru.tiger.bookprototype.entity.Like[ userId=" + userId + ", postId=" + postId + " ]";
-    }  
 }

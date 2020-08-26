@@ -2,6 +2,7 @@ package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,9 +38,13 @@ public class Article implements Serializable {
     private String content;
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     private User author;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ARTICLE_ID")        
+    List<ArticleLike> articleLikes;
+    
     public Long getId() {
         return id;
     }
@@ -102,6 +108,5 @@ public class Article implements Serializable {
     @Override
     public String toString() {
         return "ru.tiger.bookprototype.entity.Post[ id=" + id + " ]";
-    }
-    
+    }  
 }

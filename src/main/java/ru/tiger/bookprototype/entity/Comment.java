@@ -25,16 +25,19 @@ public class Comment implements Serializable, AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "USER_ID")
     private User author;
-    
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date publicationDate;
-    
+
     @Column(length = 1000)
     private String text;
+
+    @Column(name = "PARENT_ID")
+    private long parentId;
 
     public Long getId() {
         return id;
@@ -68,6 +71,15 @@ public class Comment implements Serializable, AbstractEntity {
         this.text = text;
     }
 
+    public long getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(long parentId) {
+        this.parentId = parentId;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,5 +104,5 @@ public class Comment implements Serializable, AbstractEntity {
     public String toString() {
         return "ru.tiger.bookprototype.entity.Comment[ id=" + id + " ]";
     }
-    
+
 }
