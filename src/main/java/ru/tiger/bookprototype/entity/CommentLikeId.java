@@ -9,6 +9,22 @@ public class CommentLikeId {
     private long userId;
     private long commentLike;
 
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public long getCommentLike() {
+        return commentLike;
+    }
+
+    public void setCommentLike(long commentLike) {
+        this.commentLike = commentLike;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 7;

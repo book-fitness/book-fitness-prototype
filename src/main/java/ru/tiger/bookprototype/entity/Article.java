@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
  * @author Tiger
  */
 @Entity
-public class Article implements Serializable {
+public class Article implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
     @Id

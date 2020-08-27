@@ -9,13 +9,13 @@ import ru.tiger.bookprototype.entity.Article;
  */
 public interface ArticleService {
     
-    List<Article> findByUserId(long userId);
+    Article findByUserId(long userId);
 
     void create(Article article);
 
-    void edit(Article article);
+    void update(Article article);
 
     void delete(Article article);
     
-    List<Article> showAllArticles();
+    List<Article> findAll();
 }

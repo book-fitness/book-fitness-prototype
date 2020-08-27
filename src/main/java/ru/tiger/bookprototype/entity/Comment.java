@@ -2,6 +2,7 @@ package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -38,6 +40,10 @@ public class Comment implements Serializable, AbstractEntity {
 
     @Column(name = "PARENT_ID")
     private long parentId;
+    
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @JoinColumn(name = "COMMENT_ID")
+    List<CommentLike> commentLikes; 
 
     public Long getId() {
         return id;
