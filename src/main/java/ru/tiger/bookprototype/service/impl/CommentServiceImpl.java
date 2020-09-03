@@ -1,5 +1,6 @@
 package ru.tiger.bookprototype.service.impl;
 
+import java.util.List;
 import javax.ejb.EJB;
 import ru.tiger.bookprototype.dao.CommentDao;
 import ru.tiger.bookprototype.entity.Comment;
@@ -9,18 +10,18 @@ import ru.tiger.bookprototype.service.CommentService;
  *
  * @author Igor
  */
-public class CommentServiceImpl implements CommentService {
+public class CommentServiceImpl implements CommentService<Comment> {
     
     @EJB
     private CommentDao commentDao;
 
     @Override
-    public Comment findByUserId(long userId) {
-        return commentDao.findById(userId);
+    public List<Comment> findByUserId(long userId) {
+        return (List<Comment>) commentDao.findById(userId);
     }
 
     @Override
-    public Comment findByArticleId(long articleId) {
+    public List<Comment> findByArticleId(long articleId) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

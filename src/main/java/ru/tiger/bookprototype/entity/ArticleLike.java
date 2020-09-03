@@ -22,6 +22,14 @@ public class ArticleLike {
     @Column(name = "VALUE")
     private boolean value;
 
+    public ArticleLike() {}
+
+    public ArticleLike(long userId, long articleId, boolean value) {
+        this.userId = userId;
+        this.articleId = articleId;
+        this.value = value;
+    }
+    
     public long getUserId() {
         return userId;
     }

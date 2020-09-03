@@ -7,11 +7,11 @@ import ru.tiger.bookprototype.service.LoginService;
 public class LoginServiceImpl implements LoginService {
 
     private HttpSession httpSession;
-    
+
     public LoginServiceImpl(HttpSession httpSession) {
         this.httpSession = httpSession;
     }
-    
+
     @Override
     public boolean checkPassword(String password, User user) {
         return user.getPassword().equals(password);
@@ -29,11 +29,15 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean isLogged() {
-        if (httpSession == null) return false;
-        
+        if (httpSession == null) {
+            return false;
+        }
+
         Object user = httpSession.getAttribute("user");
-        if (user == null) return false;
-        
+        if (user == null) {
+            return false;
+        }
+
         return true;
     }
 }

@@ -15,26 +15,34 @@ public class BookLike {
 
     @Id
     @Column(name = "USER_ID")
-    private long userId;
+    private Long userId;
     @Id
     @Column(name = "BOOK_ID")
-    private long bookId;
+    private Long bookId;
     @Column(name = "VALUE")
     private boolean value;
 
-    public long getUserId() {
+    public BookLike() {}
+
+    public BookLike(long userId, long bookId, boolean value) {
+        this.userId = userId;
+        this.bookId = bookId;
+        this.value = value;
+    }
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public long getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(long bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
@@ -45,7 +53,7 @@ public class BookLike {
     public void setValue(boolean value) {
         this.value = value;
     }
-    
+
     @Override
     public int hashCode() {
         int hash = 3;

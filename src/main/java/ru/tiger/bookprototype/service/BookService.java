@@ -6,15 +6,15 @@ import java.util.List;
  *
  * @author Igor
  */
-public interface ArticleService<T> {
-    
+public interface BookService<T> {
+
     List<T> findByUserId(long userId);
 
-    void create(T article);
+    void create(T book);
 
-    void update(T article);
+    void update(T book);
 
-    void delete(T article);
-    
+    void delete(T book);
+
     List<T> findAll();
 }

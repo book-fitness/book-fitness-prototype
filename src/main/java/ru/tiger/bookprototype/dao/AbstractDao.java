@@ -13,7 +13,7 @@ import ru.tiger.bookprototype.entity.AbstractEntity;
  *
  * @author Igor
  */
-public abstract class AbstractDao<T extends AbstractEntity> {
+public abstract class AbstractDao<T extends AbstractEntity> { //мы же персистент контекст только в компонентах без состояния можем инжектить. 
 
     @PersistenceContext
     protected EntityManager entityManager;

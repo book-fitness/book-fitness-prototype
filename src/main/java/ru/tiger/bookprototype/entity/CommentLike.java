@@ -12,29 +12,38 @@ import javax.persistence.IdClass;
  */
 @Entity
 @IdClass(CommentLikeId.class)
-public class CommentLike implements Serializable {
+public class CommentLike implements Serializable, AbstractLikeEntity {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "USER_ID")
-    private long userId;
+    private Long userId;
     @Id
     @Column(name = "COMMENT_ID")
-    private long commentId;
+    private Long commentId;
     @Column(name = "VALUE")
     private boolean value;
     @Column(name = "PARENT_ID")
-    private long parentId;
+    private Long parentId;
 
-    public long getUserId() {
+    public CommentLike() {
+    }
+
+    public CommentLike(long userId, long commentId, boolean value) {
+        this.userId = userId;
+        this.commentId = commentId;
+        this.value = value;
+    }
+
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
-    public long getCommentId() {
+    public Long getCommentId() {
         return commentId;
     }
 
@@ -50,7 +59,7 @@ public class CommentLike implements Serializable {
         this.commentId = commentId;
     }
 
-    public long getParentId() {
+    public Long getParentId() {
         return parentId;
     }
 
@@ -85,5 +94,20 @@ public class CommentLike implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean getValue() {
+        return isValue();
+    }
+
+    @Override
+    public Long getEntityId() {
+        return getCommentId();
+    }
+
+    @Override
+    public void setEntityId(Long entityId) {
+        setCommentId(entityId);
     }
 }

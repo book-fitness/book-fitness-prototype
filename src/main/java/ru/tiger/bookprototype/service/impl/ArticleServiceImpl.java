@@ -12,7 +12,7 @@ import ru.tiger.bookprototype.service.ArticleService;
  * @author Igor
  */
 @Stateless
-public class ArticleServiceImpl implements ArticleService {
+public class ArticleServiceImpl implements ArticleService<Article> {
 
     @EJB
     private ArticleDao articleDao;
@@ -21,8 +21,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article findByUserId(long userId) {
-        return articleDao.findById(userId);
+    public List<Article> findByUserId(long userId) {
+        return (List<Article>) articleDao.findById(userId);
     }
 
     @Override
