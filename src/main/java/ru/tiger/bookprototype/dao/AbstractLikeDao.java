@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContext;
 public abstract class AbstractLikeDao<T> {
     
     @PersistenceContext
-    EntityManager em;
+    protected EntityManager em;
     
     public void create(T entityLike) {
         em.persist(entityLike);

@@ -10,8 +10,8 @@ import ru.tiger.bookprototype.service.BookService;
  *
  * @author Igor
  */
-public class BookServiceImpl implements BookService<Book> {
-    
+public class BookServiceImpl implements BookService {
+
     @EJB
     private BookDao bookDao;
 
@@ -21,13 +21,13 @@ public class BookServiceImpl implements BookService<Book> {
     }
 
     @Override
-    public void create(Book article) {
-        bookDao.saveOrUpdate(article);
+    public void create(Book book) {
+        bookDao.saveOrUpdate(book);
     }
 
     @Override
-    public void update(Book article) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void update(Book book) {
+        bookDao.saveOrUpdate(book);
     }
 
     @Override
@@ -39,5 +39,9 @@ public class BookServiceImpl implements BookService<Book> {
     public List<Book> findAll() {
         return bookDao.findAll();
     }
-    
+
+    @Override
+    public Book findById(Long id) {
+        return bookDao.findById(id);
+    }
 }

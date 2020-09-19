@@ -14,7 +14,6 @@ import ru.tiger.bookprototype.entity.ArticleLike;
 public class ArticleLikeDao extends AbstractLikeDao<ArticleLike>{
 
     public ArticleLike findById(long userId, long articleId) {
-        //em.find(ArticleLike.class, new ArticleLikeId(userId, articleId));
         String jpql = "SELECT a FROM ArticleLike a WHERE a.userId = :userId AND a.articleId = :articleId";
         TypedQuery<ArticleLike> query = em.createQuery(jpql, ArticleLike.class);
         query.setParameter("userId", userId);

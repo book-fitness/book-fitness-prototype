@@ -10,8 +10,8 @@ import ru.tiger.bookprototype.service.CommentService;
  *
  * @author Igor
  */
-public class CommentServiceImpl implements CommentService<Comment> {
-    
+public class CommentServiceImpl implements CommentService {
+
     @EJB
     private CommentDao commentDao;
 
@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService<Comment> {
 
     @Override
     public List<Comment> findByArticleId(long articleId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -37,6 +37,11 @@ public class CommentServiceImpl implements CommentService<Comment> {
 
     @Override
     public void update(Comment comment) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
+        commentDao.saveOrUpdate(comment);
+    }
+
+    @Override
+    public Comment findByCommentId(long commentId) {
+        return commentDao.findById(commentId);
+    }
 }

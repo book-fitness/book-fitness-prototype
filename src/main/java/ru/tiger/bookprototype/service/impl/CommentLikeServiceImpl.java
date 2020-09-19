@@ -12,7 +12,7 @@ import ru.tiger.bookprototype.service.CommentLikeService;
 public class CommentLikeServiceImpl implements CommentLikeService {
 
     @EJB
-    CommentLikeDao commentLikeDao;
+    private CommentLikeDao commentLikeDao;
 
     private void setLikeOrDislike(Long userId, Long commentId, boolean value) {
 

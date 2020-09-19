@@ -1,20 +1,23 @@
 package ru.tiger.bookprototype.service;
 
 import java.util.List;
+import ru.tiger.bookprototype.entity.Comment;
 
 /**
  *
  * @author Igor
  */
-public interface CommentService<T> {
+public interface CommentService {
 
-    List<T> findByUserId(long userId);
+    List<Comment> findByUserId(long userId);
     
-    List<T> findByArticleId(long articleId);
+    List<Comment> findByArticleId(long articleId);
+    
+    Comment findByCommentId(long commentId);
 
-    void create(T comment);
+    void create(Comment comment);
 
-    void delete(T comment);
+    void delete(Comment comment);
 
-    void update(T comment);
+    void update(Comment comment);
 }

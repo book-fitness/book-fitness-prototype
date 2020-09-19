@@ -9,14 +9,14 @@ import ru.tiger.bookprototype.service.ArticleLikeService;
  *
  * @author Igor
  */
-public class AtricleLikeImpl implements ArticleLikeService {
+public class ArticleLikeServiceImpl implements ArticleLikeService {
 
     @EJB
-    ArticleLikeDao articleLikeDao;
+    private ArticleLikeDao articleLikeDao;
 
     private void setLikeOrDislike(Long userId, Long articleId, boolean value) {
-
         ArticleLike articleLike = articleLikeDao.findById(userId, articleId);
+
         if (articleLike == null) {
             articleLikeDao.create(new ArticleLike(userId, articleId, value));
         } else {

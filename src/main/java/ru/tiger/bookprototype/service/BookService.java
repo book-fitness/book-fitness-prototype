@@ -1,20 +1,23 @@
 package ru.tiger.bookprototype.service;
 
 import java.util.List;
+import ru.tiger.bookprototype.entity.Book;
 
 /**
  *
  * @author Igor
  */
-public interface BookService<T> {
+public interface BookService {
 
-    List<T> findByUserId(long userId);
+    List<Book> findByUserId(long userId);
 
-    void create(T book);
+    Book findById(Long id);
+    
+    void create(Book book);
 
-    void update(T book);
+    void update(Book book);
 
-    void delete(T book);
+    void delete(Book book);
 
-    List<T> findAll();
+    List<Book> findAll();
 }
