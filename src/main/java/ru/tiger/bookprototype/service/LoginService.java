@@ -6,9 +6,9 @@ public interface LoginService {
 
     boolean checkPassword(String password, User user);
 
-    void login(User user);
+    User login(String login, String password);
 
-    void logout(User user);
+    void logout(String login);
 
     boolean isLogged();
 }

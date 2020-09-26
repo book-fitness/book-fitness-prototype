@@ -2,6 +2,7 @@ package webservice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -25,10 +26,20 @@ public class BookWebService {
     private UserSecurityContext securityContext;
 
     @EJB
-    BookService bookService;
+    private BookService bookService;
+
+    @GET
+    @Path("{bookId}")
+    public Response get(@PathParam("bookId") Long bookId) {
+        try {
+            return Response.ok(bookService.findById(bookId)).build();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
 
     @POST
-    @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(CreateBookRequest request) {
         User user = securityContext.getUser();
@@ -46,7 +57,6 @@ public class BookWebService {
     }
 
     @PUT
-    @Path("/update")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(UpdateBookRequest request) {
         User user = securityContext.getUser();
@@ -65,7 +75,7 @@ public class BookWebService {
     }
 
     @POST
-    @Path("/delete/{bookId}")
+    @Path("{bookId}")
     public Response delete(@PathParam("bookId") Long bookId) {
         Book book = bookService.findById(bookId);
         try {

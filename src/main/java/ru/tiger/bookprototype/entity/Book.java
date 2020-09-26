@@ -120,6 +120,5 @@ public class Book implements Serializable, AbstractEntity {
     @Override
     public String toString() {
         return "ru.tiger.bookprototype.entity.Book[ id=" + id + " ]";
-    }
-    
+    }  
 }

@@ -13,7 +13,7 @@ public interface CommentService {
     
     List<Comment> findByArticleId(long articleId);
     
-    Comment findByCommentId(long commentId);
+    Comment findById(long commentId);
 
     void create(Comment comment);
 

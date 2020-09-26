@@ -1,9 +1,6 @@
 package ru.tiger.bookprototype.filter;
 
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -13,9 +10,7 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import ru.tiger.bookprototype.service.LoginService;
 import ru.tiger.bookprototype.service.impl.LoginServiceImpl;
 

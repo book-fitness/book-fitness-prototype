@@ -17,10 +17,10 @@ import webSecurity.UserSecurityContext;
 public class CommentLikeWebService {
 
     @Context
-    UserSecurityContext userContext;
+    private UserSecurityContext userContext;
 
     @EJB
-    CommentLikeService commentLikeService;
+    private CommentLikeService commentLikeService;
 
     @POST
     @Path("/setLike/{commentLikeId}")
@@ -34,7 +34,6 @@ public class CommentLikeWebService {
             e.printStackTrace();
             return Response.serverError().build();
         }
-
     }
 
     @POST
@@ -43,6 +42,32 @@ public class CommentLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             commentLikeService.like(userId, commentLikeId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
+    @Path("/setDislike/{articleId}")
+    public Response setDislike(@PathParam("articleId") long commentLikeId) {
+        Long userId = userContext.getUser().getId();
+        try {
+            commentLikeService.dislike(userId, commentLikeId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
+    @Path("/unsetDislike/{articleId}")
+    public Response unsetDislike(@PathParam("articleId") long commentLikeId) {
+        Long userId = userContext.getUser().getId();
+        try {
+            commentLikeService.unsetDislike(userId, commentLikeId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();

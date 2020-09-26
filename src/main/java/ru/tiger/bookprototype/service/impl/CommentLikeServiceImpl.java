@@ -1,6 +1,7 @@
 package ru.tiger.bookprototype.service.impl;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import ru.tiger.bookprototype.dao.CommentLikeDao;
 import ru.tiger.bookprototype.entity.CommentLike;
 import ru.tiger.bookprototype.service.CommentLikeService;
@@ -9,6 +10,7 @@ import ru.tiger.bookprototype.service.CommentLikeService;
  *
  * @author Igor
  */
+@Stateless
 public class CommentLikeServiceImpl implements CommentLikeService {
 
     @EJB

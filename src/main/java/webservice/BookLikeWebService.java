@@ -17,10 +17,10 @@ import webSecurity.UserSecurityContext;
 public class BookLikeWebService {
 
     @Context
-    UserSecurityContext userContext;
+    private UserSecurityContext userContext;
 
     @EJB
-    BookLikeService bookLikeService;
+    private BookLikeService bookLikeService;
 
     @POST
     @Path("/setLike/{bookId}")
@@ -41,6 +41,32 @@ public class BookLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             bookLikeService.unsetLike(userId, bookId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
+    @Path("/setDislike/{bookId}")
+    public Response setDisLike(@PathParam("bookId") Long bookId) {
+        Long userId = userContext.getUser().getId();
+        try {
+            bookLikeService.dislike(userId, bookId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
+    @Path("/unsetDislike/{bookId}")
+    public Response unsetDisLike(@PathParam("bookId") Long bookId) {
+        Long userId = userContext.getUser().getId();
+        try {
+            bookLikeService.unsetDislike(userId, bookId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package webservice;
 
 import javax.ws.rs.client.ClientRequestContext;
@@ -15,12 +20,10 @@ import javax.ws.rs.ext.Provider;
  * @author Igor
  */
 @Provider
-public class NewJaxRsFilter implements ClientRequestFilter, ClientResponseFilter, ContainerRequestFilter, ContainerResponseFilter {
+public class NewJaxRsFilter1 implements ClientRequestFilter, ClientResponseFilter, ContainerRequestFilter, ContainerResponseFilter {
 
-    //@Inject private UserService;
     @Override
     public void filter(ClientRequestContext requestContext) {
-
     }
 
     @Override
@@ -29,11 +32,10 @@ public class NewJaxRsFilter implements ClientRequestFilter, ClientResponseFilter
 
     @Override
     public void filter(ContainerRequestContext requestContext) {
-        //String token = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
-        //requestContext.setSecurityContext(arg0);
     }
 
     @Override
     public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext) {
     }
+    
 }

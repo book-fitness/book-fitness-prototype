@@ -37,6 +37,9 @@ public class Comment implements Serializable, AbstractEntity {
 
     @Column(length = 1000)
     private String text;
+    
+    @Column(name = "ARTICLE_ID")
+    private Long articleId;
 
     @Column(name = "PARENT_ID")
     private long parentId;
@@ -77,6 +80,14 @@ public class Comment implements Serializable, AbstractEntity {
         this.text = text;
     }
 
+    public Long getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
+    }
+    
     public long getParentId() {
         return parentId;
     }
@@ -84,8 +95,15 @@ public class Comment implements Serializable, AbstractEntity {
     public void setParentId(long parentId) {
         this.parentId = parentId;
     }
-
     
+    public List<CommentLike> getCommentLikes() {
+        return commentLikes;
+    }
+
+    public void setCommentLikes(List<CommentLike> commentLikes) {
+        this.commentLikes = commentLikes;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -110,5 +128,4 @@ public class Comment implements Serializable, AbstractEntity {
     public String toString() {
         return "ru.tiger.bookprototype.entity.Comment[ id=" + id + " ]";
     }
-
 }

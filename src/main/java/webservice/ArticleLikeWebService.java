@@ -48,4 +48,32 @@ public class ArticleLikeWebService {
             return Response.serverError().build();
         }
     }
+
+    @POST
+    @Path("/setDislike/{articleId}")
+    public Response dislike(@PathParam("articleId") long articleId) {
+        Long userId = userContext.getUser().getId();
+
+        try {
+            articleLikeService.dislike(userId, articleId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
+    @Path("/unsetDislike/{articleId}")
+    public Response unsetDislike(@PathParam("articleId") long articleId) {
+        Long userId = userContext.getUser().getId();
+
+        try {
+            articleLikeService.unsetDislike(userId, articleId);
+            return Response.ok().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
 }

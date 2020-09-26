@@ -7,15 +7,15 @@ package webservice;
 public class UpdateArticleRequest {
 
     private Long id;
-    private String headers;
+    private String header;
     private String content;
 
     public UpdateArticleRequest() {
     }
 
-    public UpdateArticleRequest(Long id, String headers, String content) {
+    public UpdateArticleRequest(Long id, String header, String content) {
         this.id = id;
-        this.headers = headers;
+        this.header = header;
         this.content = content;
     }
 
@@ -27,12 +27,12 @@ public class UpdateArticleRequest {
         this.id = id;
     }
 
-    public String getHeaders() {
-        return headers;
+    public String getHeader() {
+        return header;
     }
 
-    public void setHeaders(String headers) {
-        this.headers = headers;
+    public void setHeader(String headers) {
+        this.header = headers;
     }
 
     public String getContent() {

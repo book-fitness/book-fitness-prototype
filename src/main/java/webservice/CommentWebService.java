@@ -3,6 +3,8 @@ package webservice;
 import java.util.Date;
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -28,7 +30,18 @@ public class CommentWebService {
     @EJB
     private CommentService commentService;
 
-    @Path("/create")
+    @GET
+    @Path("{articleId}")
+    public Response get(@PathParam("articleId") Long articleId) {
+        try {
+            return Response.ok(commentService.findByArticleId(articleId)).build();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return Response.serverError().build();
+        }
+    }
+
+    @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(CreateCommentRequest request) {
         try {
@@ -37,6 +50,8 @@ public class CommentWebService {
             comment.setAuthor(user);
             comment.setPublicationDate(new Date());
             comment.setText(request.getText());
+            comment.setParentId(request.getParentId());
+            comment.setArticleId(request.getArticleId());
             commentService.create(comment);
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception ex) {
@@ -46,10 +61,9 @@ public class CommentWebService {
     }
 
     @PUT
-    @Path("/create")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response update(UpdateCommentRequest request) {
-        Comment comment = commentService.findByCommentId(request.getId());
+        Comment comment = commentService.findById(request.getId());
         try {
             comment.setText(request.getText());
             commentService.update(comment);
@@ -60,10 +74,9 @@ public class CommentWebService {
         }
     }
 
-    @POST
-    @Path("/delete/{commentId}")
+    @DELETE
     public Response delete(@PathParam("commentId") Long commentId) {
-        Comment comment = commentService.findByCommentId(commentId);
+        Comment comment = commentService.findById(commentId);
         try {
             commentService.delete(comment);
             return Response.ok().build();

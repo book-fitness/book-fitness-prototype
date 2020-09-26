@@ -7,7 +7,7 @@ package ru.tiger.bookprototype.entity;
 public class CommentLikeId {
 
     private long userId;
-    private long commentLike;
+    private long commentId;
 
     public long getUserId() {
         return userId;
@@ -18,18 +18,18 @@ public class CommentLikeId {
     }
 
     public long getCommentLike() {
-        return commentLike;
+        return commentId;
     }
 
     public void setCommentLike(long commentLike) {
-        this.commentLike = commentLike;
+        this.commentId = commentLike;
     }
     
     @Override
     public int hashCode() {
         int hash = 7;
         hash = 13 * hash + (int) (this.userId ^ (this.userId >>> 32));
-        hash = 13 * hash + (int) (this.commentLike ^ (this.commentLike >>> 32));
+        hash = 13 * hash + (int) (this.commentId ^ (this.commentId >>> 32));
         return hash;
     }
 
@@ -48,7 +48,7 @@ public class CommentLikeId {
         if (this.userId != other.userId) {
             return false;
         }
-        if (this.commentLike != other.commentLike) {
+        if (this.commentId != other.commentId) {
             return false;
         }
         return true;

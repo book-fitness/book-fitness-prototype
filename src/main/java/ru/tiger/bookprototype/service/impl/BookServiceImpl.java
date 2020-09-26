@@ -2,6 +2,7 @@ package ru.tiger.bookprototype.service.impl;
 
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import ru.tiger.bookprototype.dao.BookDao;
 import ru.tiger.bookprototype.entity.Book;
 import ru.tiger.bookprototype.service.BookService;
@@ -10,6 +11,7 @@ import ru.tiger.bookprototype.service.BookService;
  *
  * @author Igor
  */
+@Stateless
 public class BookServiceImpl implements BookService {
 
     @EJB
