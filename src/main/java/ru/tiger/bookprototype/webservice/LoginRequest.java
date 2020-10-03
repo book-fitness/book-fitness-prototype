@@ -1,17 +1,18 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 /**
  *
  * @author Igor
  */
-class RegistrationRequest {
+class LoginRequest {
+    
     private String login;
     private String password;
 
-    public RegistrationRequest() {
+    public LoginRequest() {
     }
-
-    public RegistrationRequest(String login, String password) {
+    
+    public LoginRequest(String login, String password) {
         this.login = login;
         this.password = password;
     }

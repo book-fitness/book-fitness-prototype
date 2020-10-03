@@ -11,8 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
-import ru.tiger.bookprototype.service.LoginService;
-import ru.tiger.bookprototype.service.impl.LoginServiceImpl;
+import ru.tiger.bookprototype.service.impl.LoginServiceImpl_Old;
 
 //@WebFilter(filterName = "LoginFilter", urlPatterns = {"/*"})
 public class LoginFilter implements Filter {
@@ -47,7 +46,7 @@ public class LoginFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         
-        LoginService loginService = new LoginServiceImpl(((HttpServletRequest) request).getSession(false));
+        LoginServiceImpl_Old loginService = new LoginServiceImpl_Old(((HttpServletRequest) request).getSession(false));
         String path = ((HttpServletRequest) request).getServletPath();
         
         if (!isIgnoredPath(path) && !loginService.isLogged()) {
@@ -67,7 +66,7 @@ public class LoginFilter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-
+        
     }
     
     private boolean isIgnoredPath(String path) {

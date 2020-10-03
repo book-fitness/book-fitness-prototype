@@ -5,12 +5,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 /**
  *
  * @author Igor
  */
 @Entity
+@Table(name = "COMMENT_LIKE")
 @IdClass(CommentLikeId.class)
 public class CommentLike implements Serializable, AbstractLikeEntity {
 

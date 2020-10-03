@@ -1,4 +1,4 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import javax.servlet.http.HttpSession;
 import ru.tiger.bookprototype.entity.User;

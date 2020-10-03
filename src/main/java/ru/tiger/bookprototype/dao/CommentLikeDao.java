@@ -1,6 +1,7 @@
 package ru.tiger.bookprototype.dao;
 
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import ru.tiger.bookprototype.entity.CommentLike;
@@ -9,7 +10,8 @@ import ru.tiger.bookprototype.entity.CommentLike;
  *
  * @author Igor
  */
-public class CommentLikeDao extends AbstractLikeDao<CommentLike> { //как происходит передача параметра при наследовании. 
+@Stateless
+public class CommentLikeDao extends AbstractLikeDao<CommentLike> {
 
     public CommentLike findById(long userId, long commentId) {
         String jpql = "SELECT c FROM CommentLike c WHERE c.userId = :userId AND c.commentId =:commentId";

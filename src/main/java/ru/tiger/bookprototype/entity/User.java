@@ -13,9 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
+@Table(name = "USER_TABLE")
 public class User implements Serializable, AbstractEntity {
 
     private static final long serialVersionUID = 1L;
@@ -106,6 +108,10 @@ public class User implements Serializable, AbstractEntity {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+    
+    public boolean checkPassword(String password) {
+        return password != null && !password.isEmpty() && this.password.equals(password);
     }
     
     @Override

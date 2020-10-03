@@ -8,51 +8,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 @WebServlet(name = "TestServlet2", urlPatterns = {"/TestServlet2"})
 public class TestServlet2 extends HttpServlet {
 
-    @Resource(name = "ExampleDS")
-    private DataSource dataSource;
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
             request.getRequestDispatcher("/WEB-INF/views/welcome.jsp").forward(request, response);
-            //InitialContext context = new InitialContext();
-            //DataSource dataSource = (DataSource) context.lookup("java:jboss/datasources/ExampleDS");
-            System.out.println("==== DATA SOURCE: " + dataSource);
-            printObjectList(dataSource.getConnection("", ""), out);
         } catch (Exception e) {
             e.printStackTrace();
-        }
-    }
-    
-    private void printObjectList(Connection con, PrintWriter out) {
-        try {
-            PreparedStatement statement = con.prepareStatement("SELECT id FROM book");
-            ResultSet resultSet = statement.executeQuery();
-            out.println("<ul>");
-            while (resultSet.next()) {
-                out.print("<li>");
-                out.print(resultSet.getLong("id"));
-                out.println("<li>");
-            }
-            out.println("</ul>");
-            
-            resultSet.close();
-            statement.close();
-            con.close();
-        } catch (SQLException ex) {
-            Logger.getLogger(TestServlet2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

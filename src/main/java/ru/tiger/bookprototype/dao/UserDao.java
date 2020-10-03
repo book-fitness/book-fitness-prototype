@@ -1,5 +1,6 @@
 package ru.tiger.bookprototype.dao;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
 import ru.tiger.bookprototype.entity.User;
@@ -19,6 +20,7 @@ public class UserDao extends AbstractDao<User> {
         String jpql = "SELECT u FROM User u WHERE u.username = :login";
         TypedQuery<User> query = entityManager.createQuery(jpql, User.class);
         query.setParameter("login", login);
-        return query.getSingleResult();
+        List<User> result = query.getResultList();
+        return result != null && !result.isEmpty() ? result.get(0) : null;
     }
 }

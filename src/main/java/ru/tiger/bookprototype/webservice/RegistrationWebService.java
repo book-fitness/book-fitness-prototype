@@ -1,6 +1,6 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
-import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,10 +13,10 @@ import ru.tiger.bookprototype.service.RegistrationService;
  * @author Igor
  */
 
-@Path("/registrationWebService")
+@Path("/registration")
 public class RegistrationWebService {
    
-    @EJB
+    @Inject
     private RegistrationService registrationService;
     
     @POST
@@ -24,7 +24,7 @@ public class RegistrationWebService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response tryRegister(RegistrationRequest request) {
        try {
-           registrationService.tryToRegister(request.getLogin(), request.getPassword());
+           registrationService.tryToRegister(request.getLogin(), request.getPassword(), request.getRepeatPassword());
            return Response.status(Response.Status.CREATED).build();
        } catch(Exception ex) {
            ex.printStackTrace();

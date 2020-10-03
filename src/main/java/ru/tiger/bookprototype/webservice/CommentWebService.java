@@ -1,4 +1,4 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
 import javax.ejb.EJB;
@@ -15,13 +15,13 @@ import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.entity.Comment;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.CommentService;
-import webSecurity.UserSecurityContext;
+import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *
  * @author Igor
  */
-@Path("/commentWebService")
+@Path("/comment")
 public class CommentWebService {
 
     @Context

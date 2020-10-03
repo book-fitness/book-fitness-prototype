@@ -1,4 +1,4 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.POST;
@@ -7,13 +7,13 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.service.CommentLikeService;
-import webSecurity.UserSecurityContext;
+import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *
  * @author Igor
  */
-@Path("/commentLikeWebService")
+@Path("/commentLike")
 public class CommentLikeWebService {
 
     @Context

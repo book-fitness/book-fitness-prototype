@@ -1,4 +1,4 @@
-package webSecurity;
+package ru.tiger.bookprototype.security.web;
 
 import java.security.Principal;
 import ru.tiger.bookprototype.entity.User;

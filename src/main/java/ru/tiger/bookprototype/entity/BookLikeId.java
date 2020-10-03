@@ -1,13 +1,15 @@
 package ru.tiger.bookprototype.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Igor
  */
-public class BookLikeId {
+public class BookLikeId implements Serializable {
 
     private long userId;
-    private long bookLike;
+    private long bookId;
 
     public long getUserId() {
         return userId;
@@ -17,12 +19,12 @@ public class BookLikeId {
         this.userId = userId;
     }
 
-    public long getBookLike() {
-        return bookLike;
+    public long getBookId() {
+        return bookId;
     }
 
-    public void setBookLike(long bookLike) {
-        this.bookLike = bookLike;
+    public void setBookId(long bookId) {
+        this.bookId = bookId;
     }
 
     
@@ -30,7 +32,7 @@ public class BookLikeId {
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + (int) (this.userId ^ (this.userId >>> 32));
-        hash = 29 * hash + (int) (this.bookLike ^ (this.bookLike >>> 32));
+        hash = 29 * hash + (int) (this.bookId ^ (this.bookId >>> 32));
         return hash;
     }
 
@@ -49,7 +51,7 @@ public class BookLikeId {
         if (this.userId != other.userId) {
             return false;
         }
-        if (this.bookLike != other.bookLike) {
+        if (this.bookId != other.bookId) {
             return false;
         }
         return true;

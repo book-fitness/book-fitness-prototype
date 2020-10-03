@@ -1,4 +1,4 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
 import java.util.logging.Logger;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.entity.Article;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.ArticleService;
-import webSecurity.UserSecurityContext;
+import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *

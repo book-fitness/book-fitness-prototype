@@ -1,7 +1,8 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -13,13 +14,13 @@ import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.entity.Book;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.BookService;
-import webSecurity.UserSecurityContext;
+import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *
  * @author Igor
  */
-@Path("/bookWebService")
+@Path("/book")
 public class BookWebService {
 
     @Context
@@ -74,7 +75,7 @@ public class BookWebService {
         }
     }
 
-    @POST
+    @DELETE
     @Path("{bookId}")
     public Response delete(@PathParam("bookId") Long bookId) {
         Book book = bookService.findById(bookId);

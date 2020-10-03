@@ -1,10 +1,12 @@
 package ru.tiger.bookprototype.entity;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Igor
  */
-public class ArticleLikeId {
+public class ArticleLikeId implements Serializable {
     private long userId;
     private long articleId;
 

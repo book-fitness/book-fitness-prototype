@@ -1,4 +1,4 @@
-package webSecurity;
+package ru.tiger.bookprototype.security.web;
 
 import java.security.Principal;
 import javax.ws.rs.core.SecurityContext;
@@ -11,9 +11,15 @@ import ru.tiger.bookprototype.entity.User;
 public class UserSecurityContext implements SecurityContext {
 
     private UserPrincipal userPrincipal;
+    private String authenticationScheme;
 
-    public UserSecurityContext(UserPrincipal userPrincipal) {
+    public UserSecurityContext(UserPrincipal userPrincipal, String authenticationScheme) {
         this.userPrincipal = userPrincipal;
+        this.authenticationScheme = authenticationScheme;
+    }
+
+    public UserSecurityContext(User user, String authenticationScheme) {
+        this(new UserPrincipal(user), authenticationScheme);
     }
 
     @Override
@@ -34,7 +40,7 @@ public class UserSecurityContext implements SecurityContext {
 
     @Override
     public String getAuthenticationScheme() {
-        return BASIC_AUTH;
+        return authenticationScheme;
     }
 
     public User getUser() {

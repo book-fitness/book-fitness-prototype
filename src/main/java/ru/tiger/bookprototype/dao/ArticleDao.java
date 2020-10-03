@@ -9,7 +9,6 @@ import ru.tiger.bookprototype.entity.Article;
  */
 @Stateless
 public class ArticleDao extends AbstractDao<Article> {
-
     public ArticleDao() {
         super(Article.class);
     }

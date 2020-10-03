@@ -1,4 +1,4 @@
-package webservice;
+package ru.tiger.bookprototype.webservice;
 
 import javax.ejb.EJB;
 import javax.ws.rs.POST;
@@ -6,28 +6,29 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
-import ru.tiger.bookprototype.service.BookLikeService;
-import webSecurity.UserSecurityContext;
+import ru.tiger.bookprototype.service.ArticleLikeService;
+import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *
  * @author Igor
  */
-@Path("/bookLikeWebService")
-public class BookLikeWebService {
+@Path("/articleLike")
+public class ArticleLikeWebService {
 
     @Context
     private UserSecurityContext userContext;
 
     @EJB
-    private BookLikeService bookLikeService;
+    private ArticleLikeService articleLikeService;
 
     @POST
-    @Path("/setLike/{bookId}")
-    public Response setLike(@PathParam("bookId") Long bookId) {
+    @Path("/setLike/{articleId}")
+    public Response setLike(@PathParam("articleId") long articleId) {
         Long userId = userContext.getUser().getId();
+
         try {
-            bookLikeService.like(userId, bookId);
+            articleLikeService.like(userId, articleId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,11 +37,11 @@ public class BookLikeWebService {
     }
 
     @POST
-    @Path("/unsetLike/{bookId}")
-    public Response unsetLike(@PathParam("bookId") Long bookId) {
+    @Path("/unsetLike/{articleId}")
+    public Response unsetLike(@PathParam("articleId") long articleId) {
         Long userId = userContext.getUser().getId();
         try {
-            bookLikeService.unsetLike(userId, bookId);
+            articleLikeService.unsetLike(userId, articleId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,11 +50,12 @@ public class BookLikeWebService {
     }
 
     @POST
-    @Path("/setDislike/{bookId}")
-    public Response setDisLike(@PathParam("bookId") Long bookId) {
+    @Path("/setDislike/{articleId}")
+    public Response dislike(@PathParam("articleId") long articleId) {
         Long userId = userContext.getUser().getId();
+
         try {
-            bookLikeService.dislike(userId, bookId);
+            articleLikeService.dislike(userId, articleId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,11 +64,12 @@ public class BookLikeWebService {
     }
 
     @POST
-    @Path("/unsetDislike/{bookId}")
-    public Response unsetDisLike(@PathParam("bookId") Long bookId) {
+    @Path("/unsetDislike/{articleId}")
+    public Response unsetDislike(@PathParam("articleId") long articleId) {
         Long userId = userContext.getUser().getId();
+
         try {
-            bookLikeService.unsetDislike(userId, bookId);
+            articleLikeService.unsetDislike(userId, articleId);
             return Response.ok().build();
         } catch (Exception e) {
             e.printStackTrace();
