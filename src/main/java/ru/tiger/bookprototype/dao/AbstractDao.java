@@ -33,10 +33,11 @@ public abstract class AbstractDao<T extends AbstractEntity> {
     }
 
     public void remove(T entity) {
+        entity = entityManager.merge(entity);
         entityManager.remove(entity);
     }
 
-    public T findById(Long id) {
+    public T findById(Object id) {
         return entityManager.find(type, id);
     }
 

@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -28,9 +27,11 @@ public class Book implements Serializable, AbstractEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    /*@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "user_id")
-    private User publisher;
+    private User publisher;*/
+    @Column(name = "USER_ID")
+    private Long userId;
     
     @Temporal(TemporalType.TIMESTAMP)
     private Date publicationDate;
@@ -57,13 +58,23 @@ public class Book implements Serializable, AbstractEntity {
         this.id = id;
     }
 
-    public User getPublisher() {
+    /*public User getPublisher() {
         return publisher;
     }
 
     public void setPublisher(User publisher) {
         this.publisher = publisher;
+    }*/
+
+    public Long getUserId() {
+        return userId;
     }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+    
+    
 
     public Date getPublicationDate() {
         return publicationDate;

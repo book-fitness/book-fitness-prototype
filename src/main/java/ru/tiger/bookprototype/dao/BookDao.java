@@ -17,7 +17,7 @@ public class BookDao extends AbstractDao<Book> {
     }
 
     public List<Book> findByUserId(Long userId) {
-        String jpql = "SELECT b FROM Book b WHERE b.publisher.id = :userId";
+        String jpql = "SELECT b FROM Book b WHERE b.userId = :userId";
         TypedQuery<Book> query = entityManager.createQuery(jpql, Book.class);
         query.setParameter("userId", userId);
         return query.getResultList();

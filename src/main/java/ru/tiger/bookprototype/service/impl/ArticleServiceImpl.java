@@ -25,7 +25,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public List<Article> findByUserId(long userId) {
-        return (List<Article>) articleDao.findById(userId);
+        return articleDao.findallArticlesByUserId(userId);
     }
 
     @Override

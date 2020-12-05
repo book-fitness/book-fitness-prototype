@@ -14,6 +14,8 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public User tryToLogin(String login, String password) {
         User user = userDao.findByLogin(login);
-        return user.checkPassword(password) ? user : null;
+        if (user == null) throw new RuntimeException("User not found");
+        if (!user.checkPassword(password)) new RuntimeException("Wrong password");
+        return user;
     }
 }

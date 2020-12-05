@@ -11,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,12 +36,12 @@ public class Article implements Serializable, AbstractEntity {
     @Column(length = 10000)
     private String content;
     
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "USER_ID")
-    private User author;
+//    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+//    @JoinColumn(name = "USER_ID")
+//    private User author;
     
-//    @Column(name = "USER_ID")
-//    private long userId;
+    @Column(name = "USER_ID")
+    private long userId;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ARTICLE_ID")        
@@ -80,13 +79,23 @@ public class Article implements Serializable, AbstractEntity {
         this.content = content;
     }
 
-    public User getAuthor() {
-        return author;
+//    public User getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(User author) {
+//        this.author = author;
+//    }
+
+    public long getUserId() {
+        return userId;
     }
 
-    public void setAuthor(User author) {
-        this.author = author;
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
+    
+    
     
     @Override
     public int hashCode() {
