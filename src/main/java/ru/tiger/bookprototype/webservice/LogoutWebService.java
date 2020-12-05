@@ -11,6 +11,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
@@ -26,6 +28,8 @@ import ru.tiger.bookprototype.service.TokenService;
 @DevServe
 @Path("/logout")
 public class LogoutWebService {
+    
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Inject
     private SessionContext sessionContext;
@@ -36,28 +40,19 @@ public class LogoutWebService {
     @EJB
     private TokenService tokenService;
 
-    /*@POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response logout() {
-        sessionContext.logout();
-        return Response.ok().build();
-    }*/
-
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/logoutToken")
     public Response logoutSevice() {
-        System.out.println("Inside logout {token}");
+        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
         try {
-            User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
             Token token = tokenService.findByUserId(user.getId());
-            System.out.println("Logout user " + user.getUsername() + ", token " + token.getToken());
             tokenService.remove(token);
+            log.info("User is logged out, id " + user.getId());
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Try to log out failed, id " + (user == null ? "null" : user.getId()));
             return Response.serverError().build();
         }
     }

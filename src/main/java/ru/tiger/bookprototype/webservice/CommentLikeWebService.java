@@ -6,6 +6,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.tiger.bookprototype.service.CommentLikeService;
 import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
@@ -15,6 +17,8 @@ import ru.tiger.bookprototype.security.web.UserSecurityContext;
  */
 @Path("/commentLike")
 public class CommentLikeWebService {
+    
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Context
     private UserSecurityContext userContext;
@@ -29,9 +33,10 @@ public class CommentLikeWebService {
 
         try {
             commentLikeService.like(userId, commentLikeId);
+            log.info("Comment like was set for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try setting comment like, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -42,9 +47,10 @@ public class CommentLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             commentLikeService.like(userId, commentLikeId);
+            log.info("Comment like was unset for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try unsetting comment like, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -55,9 +61,10 @@ public class CommentLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             commentLikeService.dislike(userId, commentLikeId);
+            log.info("Comment dislike was set for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try setting comment dislike, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -68,9 +75,10 @@ public class CommentLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             commentLikeService.unsetDislike(userId, commentLikeId);
+            log.info("Comment dislike was unset for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try unsetting comment dislike, userId " + userId, e);
             return Response.serverError().build();
         }
     }

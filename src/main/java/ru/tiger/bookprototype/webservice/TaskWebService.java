@@ -7,6 +7,8 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.tiger.bookprototype.entity.Task;
 import ru.tiger.bookprototype.service.TaskService;
 
@@ -16,6 +18,8 @@ import ru.tiger.bookprototype.service.TaskService;
  */
 @Path("/task")
 public class TaskWebService {
+    
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Inject
     private SessionContext sessionContext;
@@ -32,9 +36,10 @@ public class TaskWebService {
         task.setUserId(TemporaryUser.getId());
         try {
             taskService.create(task);
+            log.info("Create task id " + task.getId());
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Create task failed, id " + task.getId(), ex );
             return Response.serverError().build();
         }
     }

@@ -16,6 +16,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.Book;
 import ru.tiger.bookprototype.entity.User;
@@ -32,6 +34,8 @@ import ru.tiger.bookprototype.service.BookService;
 @DevServe
 @Path("/book")
 public class BookWebService {
+    
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Inject
     private SessionContext sessionContext;
@@ -50,9 +54,10 @@ public class BookWebService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response get(@PathParam("bookId") Long bookId) {
         try {
+            log.info("Get book by id " + bookId);
             return Response.ok(bookService.findById(bookId)).build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Get book by id failed " + bookId, ex);
             return Response.serverError().build();
         }
     }
@@ -61,28 +66,12 @@ public class BookWebService {
     @Path("/getUserBooks")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getBooksByUserId() {
+        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
         try {
-
-            System.out.println("/getUserBooks " + securityContext);
-            User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
-            System.out.println("/getUserBooks for " + (user == null ? null : user.getUsername()));
+            log.info("Get user books userId" + user.getId());
             return Response.ok(bookService.findByUserId(user.getId())).build();
         } catch (Exception ex) {
-            ex.printStackTrace();
-            return Response.serverError().build();
-        }
-    }
-
-    @GET
-    @Path("/getAllBooks")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllBooks() {
-        try {
-            List<Book> list = bookService.findByUserId(TemporaryUser.getId());
-            //Long userId = sessionContext.getUser().getId();
-            return Response.ok(list).build();
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Get user books failed " + user.getId(), ex);
             return Response.serverError().build();
         }
     }
@@ -98,9 +87,10 @@ public class BookWebService {
         book.setUserId(user.getId());
         try {
             bookService.create(book);
+            log.info("Create book for user, userId" + user.getId());
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Create book for user fialed, userId" + user.getId());
             return Response.serverError().build();
         }
     }
@@ -115,9 +105,10 @@ public class BookWebService {
         book.setUserId(TemporaryUser.getId());
         try {
             bookService.update(book);
+            log.info("Update book, bookId" + book.getId());
             return Response.status(Response.Status.OK).build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Update book failed, bookId" + book.getId(), ex);
             return Response.serverError().build();
         }
     }
@@ -128,9 +119,10 @@ public class BookWebService {
         Book book = bookService.findById(bookId);
         try {
             bookService.delete(book);
+            log.info("Delete book, bookId" + book.getId());
             return Response.ok().build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.error("Delete book failed, bookId" + book.getId(), ex);
             return Response.serverError().build();
         }
     }

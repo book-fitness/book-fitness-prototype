@@ -6,6 +6,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import ru.tiger.bookprototype.service.ArticleLikeService;
 import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
@@ -15,6 +17,8 @@ import ru.tiger.bookprototype.security.web.UserSecurityContext;
  */
 @Path("/articleLike")
 public class ArticleLikeWebService {
+    
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Context
     private UserSecurityContext userContext;
@@ -29,9 +33,10 @@ public class ArticleLikeWebService {
 
         try {
             articleLikeService.like(userId, articleId);
+            log.info("Article like was set for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try setting article like, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -42,9 +47,10 @@ public class ArticleLikeWebService {
         Long userId = userContext.getUser().getId();
         try {
             articleLikeService.unsetLike(userId, articleId);
+            log.info("Article like was unset for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try unsetting article like, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -56,9 +62,10 @@ public class ArticleLikeWebService {
 
         try {
             articleLikeService.dislike(userId, articleId);
+            log.info("Article dislike was set for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try setting article dislike, userId " + userId, e);
             return Response.serverError().build();
         }
     }
@@ -70,9 +77,10 @@ public class ArticleLikeWebService {
 
         try {
             articleLikeService.unsetDislike(userId, articleId);
+            log.info("Article dislike was unset for userId " + userId);
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error("Error when try unsetting article dislike, userId " + userId, e);
             return Response.serverError().build();
         }
     }

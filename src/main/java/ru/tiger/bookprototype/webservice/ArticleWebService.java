@@ -2,7 +2,6 @@ package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -18,6 +17,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
+import org.apache.logging.log4j.LogManager;
 import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.Article;
 import ru.tiger.bookprototype.entity.User;
@@ -25,6 +25,7 @@ import ru.tiger.bookprototype.security.web.DevServe;
 import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.security.web.UserPrincipal;
 import ru.tiger.bookprototype.service.ArticleService;
+import org.apache.logging.log4j.Logger;
 
 /**
  *
@@ -35,13 +36,13 @@ import ru.tiger.bookprototype.service.ArticleService;
 @Path("/article")
 public class ArticleWebService {
 
-    private static final Logger log = Logger.getGlobal();
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
 //    @Inject
 //    private SecurityContext securityContext;
     @Inject
     private SessionContext sessionContext;
-    
+
     @Context
     private SecurityContext securityContext;
 
@@ -58,8 +59,10 @@ public class ArticleWebService {
         try {
             Article article = articleService.findById(id);
             article.setId(null);
+            log.info("Get article by id " + id);
             return Response.ok(article).build();
         } catch (Exception ex) {
+            log.info("Get article by id failed" + id, ex);
             return Response.serverError().build();
         }
     }
@@ -68,11 +71,13 @@ public class ArticleWebService {
     @Path("/getAllArticles")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllArticles() {
+        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
         try {
-            User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
             List<Article> article = articleService.findByUserId(user.getId());
+            log.info("Get all articles for user, id " + user.getId());
             return Response.ok(article).build();
         } catch (Exception ex) {
+            log.error("Get all articles for user failed, id " + user.getId(), ex);
             return Response.serverError().build();
         }
     }
@@ -81,18 +86,18 @@ public class ArticleWebService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create")
     public Response create(CreateArticleRequest request) {
+        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
         try {
-            User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
             Article article = new Article();
             article.setHeader(request.getHeader());
             article.setContent(request.getContent());
             article.setPublicationDate(new Date());
             article.setUserId(user.getId());
             articleService.create(article);
+            log.info("Article is created, id " + article.getId());
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception e) {
-            //log.throwing("", arg1, e);
-            //log.error("Error when try create Article, userId" + user.getId(), e);
+            log.error("Error when try create Article, userId " + user.getId(), e);
             return Response.serverError().build();
         }
     }
@@ -106,9 +111,10 @@ public class ArticleWebService {
             article.setContent(request.getContent());
             article.setHeader(request.getHeader());
             articleService.update(article);
+            log.info("Update article, id " + request.getId());
             return Response.ok().build();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.info("Update article failed, id " + request.getId());
             return Response.serverError().build();
         }
     }
@@ -119,9 +125,10 @@ public class ArticleWebService {
         Article article = articleService.findById(articleId);
         try {
             articleService.delete(article);
+            log.info("Delete article, id " + articleId);
             return Response.ok().build();
         } catch (Exception ex) {
-            ex.printStackTrace();
+            log.info("Delete article failed, id " + articleId);
             return Response.serverError().build();
         }
     }
