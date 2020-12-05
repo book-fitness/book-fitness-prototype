@@ -25,11 +25,11 @@ public abstract class AbstractDao<T extends AbstractEntity> {
     }
 
     public void saveOrUpdate(T entity) {
-        if (entity.getId() == null || entity.getId() < 1) {
+        /*if (entity.getId() == null || entity.getId() < 1) {
             entityManager.persist(entity);
-        } else {
+        } else {*/
             entityManager.merge(entity);
-        }
+        //}
     }
 
     public void remove(T entity) {

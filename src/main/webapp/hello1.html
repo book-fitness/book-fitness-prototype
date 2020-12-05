@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First Vue app</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+ <div id="myvue" :title="message">
+	<button type="button" v-on:click="getArticles">ÐÐ°Ð³ÑÑÐ·Ð¸ÑÑ</button>
+	<ul>
+		<li v-for="article in articles"> {{article}}</li>
+	</ul>
+	</div>
+ </div>
+	
+	
+	<script type="text/javascript"> 
+		var app = new Vue({
+			el:'#myvue',
+			data: {
+				message: 'hello',
+				articles: [],
+				url: {
+					myUrl: 'http://localhost:8080/BookPrototype-1.0-SNAPSHOT/webresources/article/1'
+				}
+			},
+			created: function() {
+				console.log("it's ok");
+			},
+			methods: {
+				getArticles(){
+				axios.get(this.url.myUrl).then((response) => {
+					this.articles = response.data;
+				});
+			},
+			}
+		})
+	</script>
+</body>
+</html>

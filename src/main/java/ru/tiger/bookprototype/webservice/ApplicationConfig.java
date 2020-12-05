@@ -21,6 +21,7 @@ public class ApplicationConfig extends Application {
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(ru.tiger.bookprototype.security.web.AuthenticationJaxRsFilter.class);
+        resources.add(ru.tiger.bookprototype.security.web.DevServeJaxRsFilter.class);
         resources.add(ru.tiger.bookprototype.webservice.ArticleLikeWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.ArticleWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.BookLikeWebService.class);
@@ -31,6 +32,5 @@ public class ApplicationConfig extends Application {
         resources.add(ru.tiger.bookprototype.webservice.LogoutWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.PingWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.RegistrationWebService.class);
-    }
-    
+    }  
 }

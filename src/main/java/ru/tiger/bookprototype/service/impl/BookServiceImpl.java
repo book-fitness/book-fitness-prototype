@@ -19,7 +19,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findByUserId(long userId) {
-        return (List<Book>) bookDao.findById(userId);
+        return bookDao.findByUserId(userId);
     }
 
     @Override

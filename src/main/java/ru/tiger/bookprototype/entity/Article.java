@@ -40,6 +40,9 @@ public class Article implements Serializable, AbstractEntity {
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "USER_ID")
     private User author;
+    
+//    @Column(name = "USER_ID")
+//    private long userId;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ARTICLE_ID")        

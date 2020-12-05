@@ -2,18 +2,21 @@ package ru.tiger.bookprototype.webservice;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.entity.User;
+import ru.tiger.bookprototype.security.web.DevServe;
 import ru.tiger.bookprototype.service.LoginService;
 
 /**
  *
  * @author Igor
  */
+@DevServe
 @Path("/login")
 public class LoginWebService {
     @Inject
@@ -33,5 +36,16 @@ public class LoginWebService {
         } catch (Exception e) {
             return Response.serverError().build();
         }
+    }
+    
+    @OPTIONS
+    //@Path("/*")
+    public Response overviewPreflight() {
+        return Response
+                .ok()
+                //.header("Access-Control-Allow-Origin", "/*")
+                //.header("Vary", "Origin")
+                //.header("Access-Control-Allow-Headers", "Content-Type, Authorization")
+                .build();
     }
 }

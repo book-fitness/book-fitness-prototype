@@ -3,6 +3,7 @@ package ru.tiger.bookprototype.webservice;
 import java.util.Date;
 import java.util.logging.Logger;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -11,13 +12,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import ru.tiger.bookprototype.entity.Article;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.ArticleService;
-import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
 /**
  *
@@ -28,18 +27,20 @@ public class ArticleWebService {
 
     private static final Logger log = Logger.getGlobal();
 
-    @Context
-    private UserSecurityContext securityContext;
-
+    @Inject
+    private SessionContext sessionContext;
+    
     @EJB
     private ArticleService articleService;
 
     @GET
     @Path("{articleId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response get(@PathParam("articaleId") Long id) {
+    public Response get(@PathParam("articleId") Long id) {
         try {
-            return Response.ok(articleService.findById(id)).build();
+            Article article = articleService.findById(id);
+            article.setAuthor(null);
+            return Response.ok(article).build();
         } catch (Exception ex) {
             return Response.serverError().build();
         }
@@ -49,12 +50,17 @@ public class ArticleWebService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(CreateArticleRequest request) {
         try {
-            User user = securityContext.getUser();
+            if (!sessionContext.hasLoggedIn()) {
+                //throw new NotLoggedInException();
+            }
+            
+            User user = sessionContext.getUser();
             Article article = new Article();
             article.setHeader(request.getHeader());
             article.setContent(request.getContent());
             article.setPublicationDate(new Date());
             article.setAuthor(user);
+            //article.setUserId(user.getId());
             articleService.create(article);
             return Response.status(Response.Status.CREATED).build();
         } catch (Exception e) {
