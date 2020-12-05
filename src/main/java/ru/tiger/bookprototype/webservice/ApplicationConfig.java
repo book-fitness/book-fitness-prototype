@@ -32,5 +32,6 @@ public class ApplicationConfig extends Application {
         resources.add(ru.tiger.bookprototype.webservice.LogoutWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.PingWebService.class);
         resources.add(ru.tiger.bookprototype.webservice.RegistrationWebService.class);
+        resources.add(ru.tiger.bookprototype.webservice.TaskWebService.class);
     }  
 }
