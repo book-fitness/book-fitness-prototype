@@ -1,6 +1,7 @@
 package ru.tiger.bookprototype.entity;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,11 +17,11 @@ public class Task implements Serializable, AbstractEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(name = "USER_ID")
     private Long userId;
-    
+    @Column(name = "TASK_TEXT")
     private String taskText;
-    
+    @Column(name = "TASK_DETAILS")
     private String taskDetails;
 
     public Long getId() {

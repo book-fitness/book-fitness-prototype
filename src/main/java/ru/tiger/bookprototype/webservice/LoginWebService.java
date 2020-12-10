@@ -1,8 +1,6 @@
 package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
-import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
@@ -12,6 +10,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
@@ -28,12 +27,10 @@ public class LoginWebService {
 
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
-    @Inject
-    private SessionContext sessionContext;
-    @Inject
+    @Autowired
     private LoginService loginService;
 
-    @EJB
+    @Autowired
     private TokenService tokenService;
 
     @POST
@@ -54,7 +51,6 @@ public class LoginWebService {
             token.resetExpirationDate();
             tokenService.saveOrUpdate(token);
 
-            sessionContext.setUser(user);
             log.info("User is logged in, id: " + user.getId());
             return Response.ok(new LoginResponse(token, null)).build();
         } catch (Exception e) {

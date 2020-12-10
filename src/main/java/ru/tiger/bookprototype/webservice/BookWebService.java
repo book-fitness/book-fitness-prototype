@@ -1,8 +1,5 @@
 package ru.tiger.bookprototype.webservice;
 
-import java.util.List;
-import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +15,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.Book;
 import ru.tiger.bookprototype.entity.User;
@@ -37,16 +35,13 @@ public class BookWebService {
     
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
-    @Inject
-    private SessionContext sessionContext;
-
     @Context
     private SecurityContext securityContext;
 
-    @EJB
+    @Autowired
     private UserDao userDao;
 
-    @EJB
+    @Autowired
     private BookService bookService;
 
     @GET

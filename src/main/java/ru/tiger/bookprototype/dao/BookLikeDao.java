@@ -1,18 +1,18 @@
 package ru.tiger.bookprototype.dao;
 
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.BookLike;
 
 /**
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class BookLikeDao extends AbstractLikeDao<BookLike> {
 
     @PersistenceContext

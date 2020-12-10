@@ -10,12 +10,12 @@
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
     
-    <listener>
+<!--    <listener>
         <description>Main BookPrototype servlet context listener</description>
         <listener-class>ru.tiger.bookprototype.servlet.listener.BPContextListener</listener-class>
-    </listener>
+    </listener>-->
     
-    <data-source>
+<!--    <data-source>
         <name>java:jboss/datasource/bookprototypesource</name>
         <url>jdbc:postgresql://localhost:5432/book_prototype</url> 
         <user>postgres</user>
@@ -24,7 +24,7 @@
         <initial-pool-size>5</initial-pool-size>
         <min-pool-size>1</min-pool-size>
         <max-pool-size>10</max-pool-size>
-    </data-source>
+    </data-source>-->
     <!--
     <listener>
         <description>Mechanism to prevent memory leaks in SQL connection driver</description>

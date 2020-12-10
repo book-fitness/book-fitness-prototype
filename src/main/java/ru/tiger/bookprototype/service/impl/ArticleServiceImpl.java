@@ -2,8 +2,9 @@ package ru.tiger.bookprototype.service.impl;
 
 import java.util.List;
 import java.util.logging.Logger;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tiger.bookprototype.dao.ArticleDao;
 import ru.tiger.bookprototype.entity.Article;
 import ru.tiger.bookprototype.service.ArticleService;
@@ -12,12 +13,13 @@ import ru.tiger.bookprototype.service.ArticleService;
  *
  * @author Igor
  */
-@Stateless
+@Service
+@Transactional
 public class ArticleServiceImpl implements ArticleService {
 
     private static final Logger log = Logger.getGlobal();
     
-    @EJB
+    @Autowired
     private ArticleDao articleDao;
 
     public ArticleServiceImpl() {

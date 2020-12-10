@@ -1,8 +1,8 @@
 package ru.tiger.bookprototype.service.impl;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.dao.CommentDao;
 import ru.tiger.bookprototype.entity.Comment;
 import ru.tiger.bookprototype.service.CommentService;
@@ -11,10 +11,10 @@ import ru.tiger.bookprototype.service.CommentService;
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class CommentServiceImpl implements CommentService {
 
-    @EJB
+    @Autowired
     private CommentDao commentDao;
 
     @Override

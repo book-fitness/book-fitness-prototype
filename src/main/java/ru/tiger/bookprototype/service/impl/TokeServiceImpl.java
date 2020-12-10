@@ -1,7 +1,8 @@
 package ru.tiger.bookprototype.service.impl;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tiger.bookprototype.dao.TokenDao;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.service.TokenService;
@@ -10,13 +11,14 @@ import ru.tiger.bookprototype.service.TokenService;
  *
  * @author Igor
  */
-@Stateless
+@Service
+@Transactional
 public class TokeServiceImpl implements TokenService {
 
-    @EJB
+    @Autowired
     private TokenDao tokenDao;
 
-    @EJB
+    @Autowired
     private TokenGenerator tokenGenerator;
 
     @Override

@@ -1,7 +1,6 @@
 package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
-import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -14,6 +13,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Comment;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.CommentService;
@@ -31,7 +31,7 @@ public class CommentWebService {
     @Context
     private UserSecurityContext securityContext;
 
-    @EJB
+    @Autowired
     private CommentService commentService;
 
     @GET

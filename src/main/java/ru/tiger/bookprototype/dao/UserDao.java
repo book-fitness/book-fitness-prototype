@@ -1,15 +1,15 @@
 package ru.tiger.bookprototype.dao;
 
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.User;
 
 /**
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class UserDao extends AbstractDao<User> {
 
     public UserDao() {

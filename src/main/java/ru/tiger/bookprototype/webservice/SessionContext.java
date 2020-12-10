@@ -1,15 +1,18 @@
 package ru.tiger.bookprototype.webservice;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.User;
 
 /**
  *
  * @author Igor
  */
-@RequestScoped
+@Service
+@Scope("request")
+@Deprecated
 public class SessionContext {
     
     private static final String USER = "user";
@@ -18,7 +21,7 @@ public class SessionContext {
 
     public SessionContext() {}
     
-    @Inject
+    @Autowired
     public SessionContext(HttpSession session) {
         this.session = session;
     }

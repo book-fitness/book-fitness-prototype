@@ -1,14 +1,16 @@
 package ru.tiger.bookprototype.service.impl;
 
-import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.LoginService;
 
-@ApplicationScoped
+@Service
+@Transactional
 public class LoginServiceImpl implements LoginService {
-    @EJB
+    @Autowired
     private UserDao userDao;
     
     @Override

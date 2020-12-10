@@ -1,6 +1,5 @@
 package ru.tiger.bookprototype.security.web;
 
-import javax.ejb.EJB;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
@@ -10,6 +9,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.TokenService;
@@ -26,10 +26,10 @@ public class AuthenticationJaxRsFilter implements ContainerRequestFilter, Contai
     
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
     
-    @EJB
+    @Autowired
     private TokenService tokenService;
 
-    @EJB
+    @Autowired
     private UserService userService;
 
     private static final String AUTHENTICATION_SCHEME = "Basic";

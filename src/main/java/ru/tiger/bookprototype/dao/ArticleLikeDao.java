@@ -1,16 +1,16 @@
 package ru.tiger.bookprototype.dao;
 
 import java.util.List;
-import javax.ejb.Stateless;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.ArticleLike;
 
 /**
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class ArticleLikeDao extends AbstractLikeDao<ArticleLike>{
 
     public ArticleLike findById(long userId, long articleId) {

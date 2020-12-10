@@ -2,16 +2,21 @@ package ru.tiger.bookprototype.security.web;
 
 import java.security.Principal;
 import javax.ws.rs.core.SecurityContext;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.User;
 
 /**
  *
  * @author Igor
  */
+@Service
 public class UserSecurityContext implements SecurityContext {
 
     private UserPrincipal userPrincipal;
     private String authenticationScheme;
+
+    public UserSecurityContext() {
+    }
 
     public UserSecurityContext(UserPrincipal userPrincipal, String authenticationScheme) {
         this.userPrincipal = userPrincipal;

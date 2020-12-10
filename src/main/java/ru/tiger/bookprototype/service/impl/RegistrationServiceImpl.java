@@ -1,7 +1,8 @@
 package ru.tiger.bookprototype.service.impl;
 
-import javax.ejb.EJB;
-import javax.enterprise.context.ApplicationScoped;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.RegistrationService;
@@ -12,10 +13,11 @@ import ru.tiger.bookprototype.validation.PasswordValidator;
  *
  * @author Igor
  */
-@ApplicationScoped
+@Service
+@Transactional
 public class RegistrationServiceImpl implements RegistrationService {
 
-    @EJB
+    @Autowired
     private UserDao userDao;
 
     @Override

@@ -1,8 +1,9 @@
 package ru.tiger.bookprototype.service.impl;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ru.tiger.bookprototype.dao.BookDao;
 import ru.tiger.bookprototype.entity.Book;
 import ru.tiger.bookprototype.service.BookService;
@@ -11,10 +12,11 @@ import ru.tiger.bookprototype.service.BookService;
  *
  * @author Igor
  */
-@Stateless
+@Service
+@Transactional
 public class BookServiceImpl implements BookService {
 
-    @EJB
+    @Autowired
     private BookDao bookDao;
 
     @Override

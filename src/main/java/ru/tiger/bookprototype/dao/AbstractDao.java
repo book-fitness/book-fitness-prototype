@@ -31,7 +31,7 @@ public abstract class AbstractDao<T extends AbstractEntity> {
             entityManager.merge(entity);
         //}
     }
-
+    
     public void remove(T entity) {
         entity = entityManager.merge(entity);
         entityManager.remove(entity);

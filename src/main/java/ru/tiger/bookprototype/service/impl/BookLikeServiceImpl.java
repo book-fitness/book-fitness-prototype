@@ -1,7 +1,7 @@
 package ru.tiger.bookprototype.service.impl;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.dao.BookLikeDao;
 import ru.tiger.bookprototype.entity.BookLike;
 import ru.tiger.bookprototype.service.BookLikeService;
@@ -10,10 +10,10 @@ import ru.tiger.bookprototype.service.BookLikeService;
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class BookLikeServiceImpl implements BookLikeService {
 
-    @EJB
+    @Autowired
     private BookLikeDao bookLikeDao;
 
     private void setLikeOrDislike(long userId, long bookId, boolean value) {

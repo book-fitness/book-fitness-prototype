@@ -1,13 +1,13 @@
 package ru.tiger.bookprototype.service.impl;
 
 import java.util.Random;
-import javax.ejb.Stateless;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class TokenGenerator {
     private static final String source = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 

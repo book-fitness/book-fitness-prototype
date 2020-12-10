@@ -1,7 +1,5 @@
 package ru.tiger.bookprototype.webservice;
 
-import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
@@ -13,6 +11,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
@@ -30,14 +29,11 @@ import ru.tiger.bookprototype.service.TokenService;
 public class LogoutWebService {
     
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
-
-    @Inject
-    private SessionContext sessionContext;
     
     @Context
     private SecurityContext securityContext;
 
-    @EJB
+    @Autowired
     private TokenService tokenService;
 
     @POST

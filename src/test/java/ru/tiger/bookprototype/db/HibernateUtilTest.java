@@ -5,21 +5,13 @@
  */
 package ru.tiger.bookprototype.db;
 
-import org.hibernate.Session;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 /**
  *
  * @author Tiger
  */
 public class HibernateUtilTest {
     
-    public HibernateUtilTest() {
+    /*public HibernateUtilTest() {
     }
     
     @BeforeClass
@@ -36,7 +28,7 @@ public class HibernateUtilTest {
     
     @After
     public void tearDown() {
-    }
+    }*/
 
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

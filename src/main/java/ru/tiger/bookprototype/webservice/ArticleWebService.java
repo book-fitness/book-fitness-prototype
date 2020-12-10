@@ -2,8 +2,6 @@ package ru.tiger.bookprototype.webservice;
 
 import java.util.Date;
 import java.util.List;
-import javax.ejb.EJB;
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -13,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -26,6 +25,7 @@ import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.security.web.UserPrincipal;
 import ru.tiger.bookprototype.service.ArticleService;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -40,16 +40,14 @@ public class ArticleWebService {
 
 //    @Inject
 //    private SecurityContext securityContext;
-    @Inject
-    private SessionContext sessionContext;
 
     @Context
     private SecurityContext securityContext;
 
-    @EJB
+    @Autowired
     private UserDao userDao;
 
-    @EJB
+    @Autowired
     private ArticleService articleService;
 
     @GET

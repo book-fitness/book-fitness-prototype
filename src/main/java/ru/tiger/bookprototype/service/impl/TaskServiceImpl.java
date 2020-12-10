@@ -1,8 +1,8 @@
 package ru.tiger.bookprototype.service.impl;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.dao.TaskDao;
 import ru.tiger.bookprototype.entity.Task;
 import ru.tiger.bookprototype.service.TaskService;
@@ -11,10 +11,10 @@ import ru.tiger.bookprototype.service.TaskService;
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class TaskServiceImpl implements TaskService {
     
-    @EJB
+    @Autowired
     private TaskDao taskDao;
 
     @Override

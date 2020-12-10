@@ -1,6 +1,5 @@
 package ru.tiger.bookprototype.webservice;
 
-import javax.ejb.EJB;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -8,6 +7,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.service.BookLikeService;
 import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
@@ -23,7 +23,7 @@ public class BookLikeWebService {
     @Context
     private UserSecurityContext userContext;
 
-    @EJB
+    @Autowired
     private BookLikeService bookLikeService;
 
     @POST

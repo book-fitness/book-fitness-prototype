@@ -1,13 +1,13 @@
 package ru.tiger.bookprototype.dao;
 
-import javax.ejb.Stateless;
+import org.springframework.stereotype.Service;
 import ru.tiger.bookprototype.entity.Role;
 
 /**
  *
  * @author Igor
  */
-@Stateless
+@Service
 public class RoleDao extends AbstractDao<Role> {
 
     public RoleDao() {

@@ -1,12 +1,12 @@
 package ru.tiger.bookprototype.webservice;
 
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.OPTIONS;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.security.web.DevServe;
 import ru.tiger.bookprototype.service.RegistrationService;
 
@@ -18,7 +18,7 @@ import ru.tiger.bookprototype.service.RegistrationService;
 @Path("/registration")
 public class RegistrationWebService {
 
-    @Inject
+    @Autowired
     private RegistrationService registrationService;
 
     @POST
