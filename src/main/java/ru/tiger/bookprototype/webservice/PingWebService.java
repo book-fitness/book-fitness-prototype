@@ -1,5 +1,6 @@
 package ru.tiger.bookprototype.webservice;
 
+import java.time.Instant;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.Produces;
@@ -7,7 +8,8 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * REST Web Service
@@ -17,6 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Path("ping")
 public class PingWebService {
 
+    private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
+    
     @Context
     private UriInfo context;
 
@@ -34,6 +38,11 @@ public class PingWebService {
                     : "")
             .build();
         return pingObj.toString();*/
-        return "ping OK";
+        
+        Instant now = Instant.now();
+        log.info("== (log) PingWebService: " + now);
+        System.out.println("== (sout) PingWebService: " + now);
+        
+        return "ping OK, " + now;
     }
 }

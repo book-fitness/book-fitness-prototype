@@ -23,7 +23,6 @@ import ru.tiger.bookprototype.service.TokenService;
  * @author Igor
  */
 @DevServe
-@Secured
 @Path("/login")
 public class LoginWebService {
 

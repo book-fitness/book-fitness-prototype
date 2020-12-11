@@ -42,6 +42,8 @@ public class AuthenticationJaxRsFilter implements ContainerRequestFilter, Contai
         }
 
         String authorizationHeader = requestContext.getHeaderString(HttpHeaders.AUTHORIZATION);
+        log.info("== (log) AuthenticationJaxRsFilter: " + authorizationHeader);
+        System.out.println("== (sout) AuthenticationJaxRsFilter: " + authorizationHeader);
 
         if (!isTokenBasedAuthentication(authorizationHeader)) {
             log.warn("Invalid authoirization header: " + authorizationHeader);
