@@ -8,6 +8,8 @@ import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.tiger.bookprototype.security.web.DevServe;
+import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.service.ArticleLikeService;
 import ru.tiger.bookprototype.security.web.UserSecurityContext;
 
@@ -15,6 +17,8 @@ import ru.tiger.bookprototype.security.web.UserSecurityContext;
  *
  * @author Igor
  */
+@DevServe
+@Secured
 @Path("/articleLike")
 public class ArticleLikeWebService {
     

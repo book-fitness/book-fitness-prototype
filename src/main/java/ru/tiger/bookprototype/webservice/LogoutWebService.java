@@ -23,8 +23,8 @@ import ru.tiger.bookprototype.service.UserService;
  *
  * @author tiger
  */
-@Secured
 @DevServe
+@Secured
 @Path("/logout")
 public class LogoutWebService {
     

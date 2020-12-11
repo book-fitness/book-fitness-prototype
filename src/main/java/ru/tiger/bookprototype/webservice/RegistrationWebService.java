@@ -8,6 +8,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.security.web.DevServe;
+import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.service.RegistrationService;
 
 /**
@@ -15,6 +16,7 @@ import ru.tiger.bookprototype.service.RegistrationService;
  * @author Igor
  */
 @DevServe
+@Secured
 @Path("/registration")
 public class RegistrationWebService {
 

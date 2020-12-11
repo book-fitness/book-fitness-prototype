@@ -32,7 +32,7 @@ public class AuthenticationJaxRsFilter implements ContainerRequestFilter, Contai
     @Autowired
     private UserService userService;
 
-    private static final String AUTHENTICATION_SCHEME = "Basic";
+    private static final String AUTHENTICATION_SCHEME = "Bearer";
 
     //@Inject private UserService;
     @Override

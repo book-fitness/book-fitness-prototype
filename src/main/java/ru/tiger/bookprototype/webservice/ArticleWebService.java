@@ -37,7 +37,7 @@ public class ArticleWebService {
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
     @Context
-    HttpHeaders httpHeaders;
+    private HttpHeaders httpHeaders;
 
     @Autowired
     private UserService userService;

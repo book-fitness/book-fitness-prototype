@@ -17,6 +17,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Comment;
 import ru.tiger.bookprototype.entity.User;
+import ru.tiger.bookprototype.security.web.DevServe;
+import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.service.CommentService;
 import ru.tiger.bookprototype.service.UserService;
 
@@ -24,6 +26,8 @@ import ru.tiger.bookprototype.service.UserService;
  *
  * @author Igor
  */
+@DevServe
+@Secured
 @Path("/comment")
 public class CommentWebService {
 

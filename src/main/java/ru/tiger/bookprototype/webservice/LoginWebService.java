@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
+import ru.tiger.bookprototype.security.web.Secured;
 import ru.tiger.bookprototype.service.LoginService;
 import ru.tiger.bookprototype.service.TokenService;
 
@@ -22,6 +23,7 @@ import ru.tiger.bookprototype.service.TokenService;
  * @author Igor
  */
 @DevServe
+@Secured
 @Path("/login")
 public class LoginWebService {
 

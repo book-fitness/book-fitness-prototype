@@ -39,7 +39,7 @@ public class UserServiceImplenetation implements UserService {
     @Override
     public User findByHeaders(HttpHeaders httpHeaders) {
         String authorizationHeader = httpHeaders.getHeaderString(HttpHeaders.AUTHORIZATION);
-        String AUTHENTICATION_SCHEME = "Basic";
+        String AUTHENTICATION_SCHEME = "Bearer";
         String tokenValue = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
         Token token = tokenDao.findByTokenValue(tokenValue);
         return userDao.findById(token.getUserId());
