@@ -44,3 +44,4 @@ public class UserServiceImplenetation implements UserService {
         Token token = tokenDao.findByTokenValue(tokenValue);
         return userDao.findById(token.getUserId());
     }
+}
