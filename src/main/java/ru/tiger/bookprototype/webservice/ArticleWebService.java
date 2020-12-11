@@ -11,21 +11,19 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import org.apache.logging.log4j.LogManager;
-import ru.tiger.bookprototype.dao.UserDao;
 import ru.tiger.bookprototype.entity.Article;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
 import ru.tiger.bookprototype.security.web.Secured;
-import ru.tiger.bookprototype.security.web.UserPrincipal;
 import ru.tiger.bookprototype.service.ArticleService;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import ru.tiger.bookprototype.service.UserService;
 
 /**
  *
@@ -38,15 +36,12 @@ public class ArticleWebService {
 
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
-//    @Inject
-//    private SecurityContext securityContext;
-
     @Context
-    private SecurityContext securityContext;
+    HttpHeaders httpHeaders;
 
     @Autowired
-    private UserDao userDao;
-
+    private UserService userService;
+    
     @Autowired
     private ArticleService articleService;
 
@@ -69,7 +64,7 @@ public class ArticleWebService {
     @Path("/getAllArticles")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllArticles() {
-        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
+        User user = userService.findByHeaders(httpHeaders);
         try {
             List<Article> article = articleService.findByUserId(user.getId());
             log.info("Get all articles for user, id " + user.getId());
@@ -84,7 +79,7 @@ public class ArticleWebService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/create")
     public Response create(CreateArticleRequest request) {
-        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
+        User user = userService.findByHeaders(httpHeaders);
         try {
             Article article = new Article();
             article.setHeader(request.getHeader());

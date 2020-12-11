@@ -6,9 +6,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.SecurityContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ import ru.tiger.bookprototype.entity.Token;
 import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.security.web.DevServe;
 import ru.tiger.bookprototype.security.web.Secured;
-import ru.tiger.bookprototype.security.web.UserPrincipal;
 import ru.tiger.bookprototype.service.TokenService;
+import ru.tiger.bookprototype.service.UserService;
 
 /**
  *
@@ -31,7 +31,10 @@ public class LogoutWebService {
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
     
     @Context
-    private SecurityContext securityContext;
+    private HttpHeaders httpHeaders;
+    
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private TokenService tokenService;
@@ -41,7 +44,7 @@ public class LogoutWebService {
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/logoutToken")
     public Response logoutSevice() {
-        User user = ((UserPrincipal) securityContext.getUserPrincipal()).getUser();
+        User user = userService.findByHeaders(httpHeaders);
         try {
             Token token = tokenService.findByUserId(user.getId());
             tokenService.remove(token);

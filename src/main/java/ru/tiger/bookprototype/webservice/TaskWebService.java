@@ -3,13 +3,17 @@ package ru.tiger.bookprototype.webservice;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.tiger.bookprototype.entity.Task;
+import ru.tiger.bookprototype.entity.User;
 import ru.tiger.bookprototype.service.TaskService;
+import ru.tiger.bookprototype.service.UserService;
 
 /**
  *
@@ -20,16 +24,23 @@ public class TaskWebService {
     
     private static final Logger log = LogManager.getLogger("BookPrototypeLogger");
 
+    @Context
+    private HttpHeaders httpHeaders;
+    
+    @Autowired
+    private UserService userService;
+    
     @Autowired
     private TaskService taskService;
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(CreateTaskRequest taskRequest) {
+        User user = userService.findByHeaders(httpHeaders);
         Task task = new Task();
         task.setTaskText(taskRequest.getTaskText());
         task.setTaskDetails(taskRequest.getTaskDetails());
-        task.setUserId(TemporaryUser.getId());
+        task.setUserId(user.getId());
         try {
             taskService.create(task);
             log.info("Create task id " + task.getId());

@@ -51,6 +51,7 @@ public class AuthenticationJaxRsFilter implements ContainerRequestFilter, Contai
 
         String token = authorizationHeader.substring(AUTHENTICATION_SCHEME.length()).trim();
         try {
+            // don't use this
             User user = validateToken(token);
             requestContext.setSecurityContext(new UserSecurityContext(user, AUTHENTICATION_SCHEME));
         } catch (Exception e) {
