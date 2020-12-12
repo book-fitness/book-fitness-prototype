@@ -89,7 +89,7 @@ public class Main {
                 user3.setPhone("1234567");
                 user3.setPassword("qwerty1234");
                 user3.setConfirmPassword("qwerty1234");
-                userService.save(user1);
+                userService.save(user3);
             }
         };
     }
